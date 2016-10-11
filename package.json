@@ -40,10 +40,12 @@
     "appId": "SeqPlots3",
     "category": "EDA",
     "asar": false,
+    
     "files": [
    		"**/*",
    		"!R*",
    		"R${os}"
     ]
+    
   }
 }
