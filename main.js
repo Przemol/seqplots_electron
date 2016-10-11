@@ -22,9 +22,6 @@ function createWindow () {
   // and load the index.html of the app.
   mainWindow.loadURL(`file://${__dirname}/index.html`)
 
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools()
-
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
     // Dereference the window object, usually you would store windows
@@ -68,6 +65,13 @@ ipcMain.on('addr-change', function(event, arg) {
   mainWindow.loadURL(arg);
 });
 
+ipcMain.on('dev-tools', function(event, arg) {
+  // Open the DevTools.
+  mainWindow.webContents.openDevTools()
+
+});
+
+ 
 ipcMain.on('help', function(event, arg) {
   console.log('Setting url to:', arg);
   help = new BrowserWindow({
