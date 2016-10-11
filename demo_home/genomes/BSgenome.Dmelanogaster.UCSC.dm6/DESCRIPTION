@@ -1,0 +1,21 @@
+Package: BSgenome.Dmelanogaster.UCSC.dm6
+Title: Full genome sequences for Drosophila melanogaster (UCSC version
+        dm6)
+Description: Full genome sequences for Drosophila melanogaster (Fly) as provided by UCSC (dm6, Aug. 2014) and stored in Biostrings objects.
+Version: 1.4.1
+Author: The Bioconductor Dev Team
+Maintainer: Bioconductor Package Maintainer <maintainer@bioconductor.org>
+Depends: BSgenome (>= 1.35.10)
+Imports: BSgenome
+Suggests: GenomicFeatures
+License: Artistic-2.0
+organism: Drosophila melanogaster
+species: Fly
+provider: UCSC
+provider_version: dm6
+release_date: Aug. 2014
+release_name: BDGP Release 6 + ISO1 MT
+source_url: http://hgdownload.cse.ucsc.edu/goldenPath/dm6/bigZips/
+biocViews: AnnotationData, Genetics, BSgenome, Drosophila_melanogaster
+Packaged: 2014-12-16 21:42:34 UTC; hpages
+Built: R 3.2.3; ; 2016-01-29 17:15:16 UTC; unix
