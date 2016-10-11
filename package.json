@@ -7,7 +7,11 @@
     "postinstall": "install-app-deps",
     "start": "electron ./app --enable-logging",
     "dev": "NODE_ENV='development' npm run start",
-    "dist": "build -mwl --x64 --ia32"
+    "dist2": "build -mwl --x64 --ia32"
+    "compile": "rimraf app/out && tsc",
+    "pack": "npm run compile && build --dir",
+    "dist": "npm run compile && build",
+    "release": "npm run compile && build"
   },
   "repository": "przemol/seqplots_electron",
   "keywords": [
