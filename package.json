@@ -1,13 +1,15 @@
 {
   "name": "SeqPlots",
-  "version": "1.0.2",
-  "description": "h An interactive tool for visualizing NGS signals and sequence motif densities along genomic features using average plots and heatmaps.",
+  "version": "3.1.3b",
+  "description": "An interactive tool for visualizing NGS signals and sequence motif densities along genomic features using average plots and heatmaps.",
   "main": "main.js",
   "scripts": {
-    "pack": "build --dir",
-    "dist": "build"
+    "postinstall": "install-app-deps",
+    "start": "electron ./app --enable-logging",
+    "dev": "NODE_ENV='development' npm run start",
+    "dist": "build -mwl --x64 --ia32"
   },
-  "repository": "Przemol/seqplots_electron",
+  "repository": "przemol/seqplots_electron",
   "keywords": [
     "ChIP-seq",
     "RNA-seq",
@@ -19,21 +21,25 @@
     "url": "https://github.com/Przemol/seqplots/issues"
   },
   "homepage": "http://przemol.github.io/seqplots",
+  "dependencies": {
+    "jquery": "^3.1.0",
+    "bootstrap": "^3.3.7",
+    "ngrok": "^2.2.2"
+  },
   "devDependencies": {
     "electron": "^1.4.3",
     "electron-builder": "^7.11.4",
     "electron-packager": "^7.5.1",
     "electron-prebuilt": "^1.2.0"
   },
-  "dependencies": {
-    "jquery": "^3.1.0",
-    "bootstrap": "^33.3.7",
-    "ngrok": "^2.2.2"
-  },
   "build": {
-    "appId": "SeqPlots2",
+    "appId": "SeqPlots3",
     "category": "EDA",
-    "asar": false
-  },
-  "postinstall": "install-app-deps"
+    "asar": false,
+    "files": [
+   		"**/*",
+   		"!R*",
+   		"R${os}"
+    ]
+  }
 }
