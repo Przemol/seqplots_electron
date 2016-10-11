@@ -1,0 +1,4 @@
+countries               Word countries ISO code.
+gconnect                Connect to Google account
+gtrends                 Google Trends Query
+sport_trend             Google Trends sport data

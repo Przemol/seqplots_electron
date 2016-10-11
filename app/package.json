@@ -1,0 +1,23 @@
+{
+  "name": "SeqPlots",
+  "version": "3.0.3",
+  "description": "h An interactive tool for visualizing NGS signals and sequence motif densities along genomic features using average plots and heatmaps.",
+  "main": "main.js",
+  "repository": "Przemol/seqplots_electron",
+  "keywords": [
+    "ChIP-seq",
+    "RNA-seq",
+    "NGS"
+  ],
+  "author": "Przemyslaw Stempor",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/Przemol/seqplots/issues"
+  },
+  "homepage": "http://przemol.github.io/seqplots",
+  "dependencies": {
+    "jquery": "^3.1.0",
+    "bootstrap": "^3.3.7",
+    "ngrok": "^2.2.2"
+  }
+}

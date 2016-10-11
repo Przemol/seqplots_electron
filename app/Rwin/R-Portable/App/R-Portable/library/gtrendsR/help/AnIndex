@@ -1,0 +1,9 @@
+.getDefaultConnection	gconnect
+as.zoo.gtrends	gtrends
+countries	countries
+gconnect	gconnect
+gtrends	gtrends
+gtrends.default	gtrends
+plot.gtrends	gtrends
+sport_trend	sport_trend
+summary.gtrends	gtrends

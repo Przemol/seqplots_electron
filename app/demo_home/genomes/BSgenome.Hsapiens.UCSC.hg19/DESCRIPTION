@@ -1,0 +1,20 @@
+Package: BSgenome.Hsapiens.UCSC.hg19
+Title: Full genome sequences for Homo sapiens (UCSC version hg19)
+Description: Full genome sequences for Homo sapiens (Human) as provided by UCSC (hg19, Feb. 2009) and stored in Biostrings objects.
+Version: 1.4.0
+Author: The Bioconductor Dev Team
+Maintainer: Bioconductor Package Maintainer <maintainer@bioconductor.org>
+Depends: BSgenome (>= 1.33.5)
+Imports: BSgenome
+Suggests: TxDb.Hsapiens.UCSC.hg19.knownGene
+License: Artistic-2.0
+organism: Homo sapiens
+species: Human
+provider: UCSC
+provider_version: hg19
+release_date: Feb. 2009
+release_name: Genome Reference Consortium GRCh37
+source_url: http://hgdownload.cse.ucsc.edu/goldenPath/hg19/bigZips/
+biocViews: AnnotationData, Genetics, BSgenome, Homo_sapiens
+Packaged: 2014-05-13 21:34:12 UTC; hpages
+Built: R 3.2.3; ; 2016-01-29 17:14:23 UTC; unix

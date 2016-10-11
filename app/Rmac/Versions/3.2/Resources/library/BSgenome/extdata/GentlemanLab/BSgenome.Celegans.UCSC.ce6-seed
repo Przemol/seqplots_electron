@@ -1,0 +1,41 @@
+Package: BSgenome.Celegans.UCSC.ce6
+Title: Full genome sequences for Caenorhabditis elegans (UCSC version ce6)
+Description: Full genome sequences for Caenorhabditis elegans (Worm) as provided by UCSC (ce6, May 2008) and stored in Biostrings objects.
+Version: 1.4.2
+Suggests: TxDb.Celegans.UCSC.ce6.ensGene
+organism: Caenorhabditis elegans
+common_name: Worm
+provider: UCSC
+provider_version: ce6
+release_date: May 2008
+release_name: WormBase v. WS190
+source_url: http://hgdownload.cse.ucsc.edu/goldenPath/ce6/bigZips/
+organism_biocview: Caenorhabditis_elegans
+BSgenomeObjname: Celegans
+seqnames: paste("chr", c("I", "II", "III", "IV", "V", "X", "M"), sep="")
+circ_seqs: "chrM"
+SrcDataFiles: chromFa.tar.gz from ftp://hgdownload.cse.ucsc.edu/goldenPath/ce6/bigZips/
+PkgExamples: genome$chrI  # same as genome[["chrI"]]
+	.
+	## ---------------------------------------------------------------------
+	## Upstream sequences
+	## ---------------------------------------------------------------------
+	## Starting with BioC 3.0, the upstream1000, upstream2000, and
+	## upstream5000 sequences for ce6 are not included in the BSgenome data
+	## package anymore. However they can easily be extracted from the full
+	## genome sequences with something like:
+	.
+	library(TxDb.Celegans.UCSC.ce6.ensGene)
+	txdb <- TxDb.Celegans.UCSC.ce6.ensGene
+	gn <- sort(genes(txdb))
+	up1000 <- flank(gn, width=1000)
+	up1000seqs <- getSeq(genome, up1000)
+	.
+	## IMPORTANT: Make sure you use a TxDb package (or TxDb object),
+	## that contains a gene model based on the exact same reference genome
+	## as the BSgenome object you pass to getSeq(). Note that you can make
+	## your own custom TxDb object from various annotation resources.
+	## See the makeTxDbFromUCSC(), makeTxDbFromBiomart(),
+	## and makeTxDbFromGFF() functions in the GenomicFeatures
+	## package.
+seqs_srcdir: /fh/fast/morgan_m/BioC/BSgenomeForge/srcdata/BSgenome.Celegans.UCSC.ce6/seqs

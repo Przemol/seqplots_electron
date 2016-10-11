@@ -1,0 +1,447 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>R: Infrastructure for Biostrings-based genome data packages and
+support for efficient SNP representation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+<h1> Infrastructure for Biostrings-based genome data packages and
+support for efficient SNP representation
+<img class="toplogo" src="../../../doc/html/logo.jpg" alt="[R logo]" />
+</h1>
+<hr/>
+<div style="text-align: center;">
+<a href="../../../doc/html/packages.html"><img class="arrow" src="../../../doc/html/left.jpg" alt="[Up]" /></a>
+<a href="../../../doc/html/index.html"><img class="arrow" src="../../../doc/html/up.jpg" alt="[Top]" /></a>
+</div><h2>Documentation for package &lsquo;BSgenome&rsquo; version 1.38.0</h2>
+
+<ul><li><a href="../DESCRIPTION">DESCRIPTION file</a>.</li>
+<li><a href="../doc/index.html">User guides, package vignettes and other documentation.</a></li>
+<li><a href="../NEWS">Package NEWS</a>.</li>
+</ul>
+
+<h2>Help Pages</h2>
+
+
+<p style="text-align: center;">
+<a href="#A">A</a>
+<a href="#B">B</a>
+<a href="#C">C</a>
+<a href="#D">D</a>
+<a href="#E">E</a>
+<a href="#F">F</a>
+<a href="#G">G</a>
+<a href="#H">H</a>
+<a href="#I">I</a>
+<a href="#L">L</a>
+<a href="#M">M</a>
+<a href="#N">N</a>
+<a href="#O">O</a>
+<a href="#P">P</a>
+<a href="#R">R</a>
+<a href="#S">S</a>
+<a href="#U">U</a>
+<a href="#V">V</a>
+<a href="#W">W</a>
+<a href="#X">X</a>
+<a href="#misc">misc</a>
+</p>
+
+
+<h2><a name="A">-- A --</a></h2>
+
+<table width="100%">
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">alphabetFrequency-method</a></td>
+<td>BSgenomeViews objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">as.character-method</a></td>
+<td>BSgenomeViews objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">as.data.frame-method</a></td>
+<td>BSgenomeViews objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenome-class.html">as.list-method</a></td>
+<td>BSgenome objects</td></tr>
+<tr><td style="width: 25%;"><a href="available.genomes.html">available.genomes</a></td>
+<td>Find available/installed genomes</td></tr>
+<tr><td style="width: 25%;"><a href="injectSNPs.html">available.SNPs</a></td>
+<td>SNP injection</td></tr>
+</table>
+
+<h2><a name="B">-- B --</a></h2>
+
+<table width="100%">
+<tr><td style="width: 25%;"><a href="bsapply.html">bsapply</a></td>
+<td>bsapply</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenome-class.html">BSgenome</a></td>
+<td>BSgenome objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenome-class.html">BSgenome-class</a></td>
+<td>BSgenome objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenome-utils.html">BSgenome-utils</a></td>
+<td>BSgenome utilities</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeForge.html">BSgenomeDataPkgSeed</a></td>
+<td>The BSgenomeForge functions</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeForge.html">BSgenomeDataPkgSeed-class</a></td>
+<td>The BSgenomeForge functions</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeForge.html">BSgenomeForge</a></td>
+<td>The BSgenomeForge functions</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">BSgenomeViews</a></td>
+<td>BSgenomeViews objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">BSgenomeViews-class</a></td>
+<td>BSgenomeViews objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSParams-class.html">BSParams</a></td>
+<td>Class "BSParams"</td></tr>
+<tr><td style="width: 25%;"><a href="BSParams-class.html">BSParams-class</a></td>
+<td>Class "BSParams"</td></tr>
+</table>
+
+<h2><a name="C">-- C --</a></h2>
+
+<table width="100%">
+<tr><td style="width: 25%;"><a href="BSgenome-class.html">class:BSgenome</a></td>
+<td>BSgenome objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeForge.html">class:BSgenomeDataPkgSeed</a></td>
+<td>The BSgenomeForge functions</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">class:BSgenomeViews</a></td>
+<td>BSgenomeViews objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSParams-class.html">class:BSParams</a></td>
+<td>Class "BSParams"</td></tr>
+<tr><td style="width: 25%;"><a href="injectSNPs.html">class:InjectSNPsHandler</a></td>
+<td>SNP injection</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">class:SNPlocs</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="XtraSNPlocs-class.html">class:XtraSNPlocs</a></td>
+<td>XtraSNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">coerce-method</a></td>
+<td>BSgenomeViews objects</td></tr>
+<tr><td style="width: 25%;"><a href="XtraSNPlocs-class.html">colnames-method</a></td>
+<td>XtraSNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">commonName-method</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="XtraSNPlocs-class.html">commonName-method</a></td>
+<td>XtraSNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">compatibleGenomes</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">compatibleGenomes-method</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">consensusMatrix-method</a></td>
+<td>BSgenomeViews objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">consensusString-method</a></td>
+<td>BSgenomeViews objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenome-utils.html">countPWM-method</a></td>
+<td>BSgenome utilities</td></tr>
+</table>
+
+<h2><a name="D">-- D --</a></h2>
+
+<table width="100%">
+<tr><td style="width: 25%;"><a href="XtraSNPlocs-class.html">dim-method</a></td>
+<td>XtraSNPlocs objects</td></tr>
+</table>
+
+<h2><a name="E">-- E --</a></h2>
+
+<table width="100%">
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">elementLengths-method</a></td>
+<td>BSgenomeViews objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">end-method</a></td>
+<td>BSgenomeViews objects</td></tr>
+<tr><td style="width: 25%;"><a href="export-methods.html">export-method</a></td>
+<td>Export a BSgenome object as a FASTA or twoBit file</td></tr>
+<tr><td style="width: 25%;"><a href="export-methods.html">export-methods</a></td>
+<td>Export a BSgenome object as a FASTA or twoBit file</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">extractROWS-method</a></td>
+<td>BSgenomeViews objects</td></tr>
+</table>
+
+<h2><a name="F">-- F --</a></h2>
+
+<table width="100%">
+<tr><td style="width: 25%;"><a href="BSgenomeForge.html">forgeBSgenomeDataPkg</a></td>
+<td>The BSgenomeForge functions</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeForge.html">forgeBSgenomeDataPkg-method</a></td>
+<td>The BSgenomeForge functions</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeForge.html">forgeMasksFiles</a></td>
+<td>The BSgenomeForge functions</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeForge.html">forgeSeqFiles</a></td>
+<td>The BSgenomeForge functions</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeForge.html">forgeSeqlengthsFile</a></td>
+<td>The BSgenomeForge functions</td></tr>
+</table>
+
+<h2><a name="G">-- G --</a></h2>
+
+<table width="100%">
+<tr><td style="width: 25%;"><a href="available.genomes.html">getBSgenome</a></td>
+<td>Find available/installed genomes</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">getListElement-method</a></td>
+<td>BSgenomeViews objects</td></tr>
+<tr><td style="width: 25%;"><a href="getSeq-methods.html">getSeq-method</a></td>
+<td>getSeq method for BSgenome and XStringSet objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">granges-method</a></td>
+<td>BSgenomeViews objects</td></tr>
+</table>
+
+<h2><a name="H">-- H --</a></h2>
+
+<table width="100%">
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">hasOnlyBaseLetters-method</a></td>
+<td>BSgenomeViews objects</td></tr>
+</table>
+
+<h2><a name="I">-- I --</a></h2>
+
+<table width="100%">
+<tr><td style="width: 25%;"><a href="injectSNPs.html">injectSNPs</a></td>
+<td>SNP injection</td></tr>
+<tr><td style="width: 25%;"><a href="injectSNPs.html">injectSNPs-method</a></td>
+<td>SNP injection</td></tr>
+<tr><td style="width: 25%;"><a href="injectSNPs.html">InjectSNPsHandler</a></td>
+<td>SNP injection</td></tr>
+<tr><td style="width: 25%;"><a href="injectSNPs.html">InjectSNPsHandler-class</a></td>
+<td>SNP injection</td></tr>
+<tr><td style="width: 25%;"><a href="available.genomes.html">installed.genomes</a></td>
+<td>Find available/installed genomes</td></tr>
+<tr><td style="width: 25%;"><a href="injectSNPs.html">installed.SNPs</a></td>
+<td>SNP injection</td></tr>
+</table>
+
+<h2><a name="L">-- L --</a></h2>
+
+<table width="100%">
+<tr><td style="width: 25%;"><a href="BSgenome-class.html">length-method</a></td>
+<td>BSgenome objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">length-method</a></td>
+<td>BSgenomeViews objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">letterFrequency-method</a></td>
+<td>BSgenomeViews objects</td></tr>
+</table>
+
+<h2><a name="M">-- M --</a></h2>
+
+<table width="100%">
+<tr><td style="width: 25%;"><a href="BSgenome-class.html">masknames</a></td>
+<td>BSgenome objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenome-class.html">masknames-method</a></td>
+<td>BSgenome objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenome-utils.html">matchPWM-method</a></td>
+<td>BSgenome utilities</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenome-class.html">mseqnames</a></td>
+<td>BSgenome objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenome-class.html">mseqnames-method</a></td>
+<td>BSgenome objects</td></tr>
+</table>
+
+<h2><a name="N">-- N --</a></h2>
+
+<table width="100%">
+<tr><td style="width: 25%;"><a href="BSgenome-class.html">names-method</a></td>
+<td>BSgenome objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">names-method</a></td>
+<td>BSgenomeViews objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">nchar-method</a></td>
+<td>BSgenomeViews objects</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">newSNPlocs</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="XtraSNPlocs-class.html">newXtraSNPlocs</a></td>
+<td>XtraSNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">nucleotideFrequencyAt-method</a></td>
+<td>BSgenomeViews objects</td></tr>
+</table>
+
+<h2><a name="O">-- O --</a></h2>
+
+<table width="100%">
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">oligonucleotideFrequency-method</a></td>
+<td>BSgenomeViews objects</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">organism-method</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="XtraSNPlocs-class.html">organism-method</a></td>
+<td>XtraSNPlocs objects</td></tr>
+</table>
+
+<h2><a name="P">-- P --</a></h2>
+
+<table width="100%">
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">provider-method</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="XtraSNPlocs-class.html">provider-method</a></td>
+<td>XtraSNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">providerVersion-method</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="XtraSNPlocs-class.html">providerVersion-method</a></td>
+<td>XtraSNPlocs objects</td></tr>
+</table>
+
+<h2><a name="R">-- R --</a></h2>
+
+<table width="100%">
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">ranges-method</a></td>
+<td>BSgenomeViews objects</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">referenceGenome</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">referenceGenome-method</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="XtraSNPlocs-class.html">referenceGenome-method</a></td>
+<td>XtraSNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">releaseDate-method</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="XtraSNPlocs-class.html">releaseDate-method</a></td>
+<td>XtraSNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">releaseName-method</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="XtraSNPlocs-class.html">releaseName-method</a></td>
+<td>XtraSNPlocs objects</td></tr>
+</table>
+
+<h2><a name="S">-- S --</a></h2>
+
+<table width="100%">
+<tr><td style="width: 25%;"><a href="BSgenome-class.html">seqinfo-method</a></td>
+<td>BSgenome objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">seqinfo-method</a></td>
+<td>BSgenomeViews objects</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">seqinfo-method</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="XtraSNPlocs-class.html">seqinfo-method</a></td>
+<td>XtraSNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenome-class.html">seqinfo&lt;--method</a></td>
+<td>BSgenome objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">seqnames-method</a></td>
+<td>BSgenomeViews objects</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">seqnames-method</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="XtraSNPlocs-class.html">seqnames-method</a></td>
+<td>XtraSNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenome-class.html">seqnames&lt;--method</a></td>
+<td>BSgenome objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">seqtype-method</a></td>
+<td>BSgenomeViews objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenome-class.html">show-method</a></td>
+<td>BSgenome objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">show-method</a></td>
+<td>BSgenomeViews objects</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">show-method</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="XtraSNPlocs-class.html">show-method</a></td>
+<td>XtraSNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="injectSNPs.html">SNPcount</a></td>
+<td>SNP injection</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">snpcount</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="injectSNPs.html">SNPcount-method</a></td>
+<td>SNP injection</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">snpcount-method</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="XtraSNPlocs-class.html">snpcount-method</a></td>
+<td>XtraSNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="injectSNPs.html">snpcount-method</a></td>
+<td>SNP injection</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">snpid2alleles</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">snpid2alleles-method</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">snpid2grange</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">snpid2grange-method</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">snpid2loc</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">snpid2loc-method</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">SNPlocs</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">snplocs</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">SNPlocs-class</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="injectSNPs.html">SNPlocs-method</a></td>
+<td>SNP injection</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">snplocs-method</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="injectSNPs.html">snplocs-method</a></td>
+<td>SNP injection</td></tr>
+<tr><td style="width: 25%;"><a href="injectSNPs.html">SNPlocs_pkgname</a></td>
+<td>SNP injection</td></tr>
+<tr><td style="width: 25%;"><a href="injectSNPs.html">SNPlocs_pkgname-method</a></td>
+<td>SNP injection</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">snpsById</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">snpsById-method</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="XtraSNPlocs-class.html">snpsById-method</a></td>
+<td>XtraSNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">snpsByOverlaps</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">snpsByOverlaps-method</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="XtraSNPlocs-class.html">snpsByOverlaps-method</a></td>
+<td>XtraSNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">snpsBySeqname</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">snpsBySeqname-method</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="XtraSNPlocs-class.html">snpsBySeqname-method</a></td>
+<td>XtraSNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenome-class.html">sourceUrl</a></td>
+<td>BSgenome objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenome-class.html">sourceUrl-method</a></td>
+<td>BSgenome objects</td></tr>
+<tr><td style="width: 25%;"><a href="SNPlocs-class.html">species-method</a></td>
+<td>SNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="XtraSNPlocs-class.html">species-method</a></td>
+<td>XtraSNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">start-method</a></td>
+<td>BSgenomeViews objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">strand-method</a></td>
+<td>BSgenomeViews objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">subject-method</a></td>
+<td>BSgenomeViews objects</td></tr>
+</table>
+
+<h2><a name="U">-- U --</a></h2>
+
+<table width="100%">
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">uniqueLetters-method</a></td>
+<td>BSgenomeViews objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">unlist-method</a></td>
+<td>BSgenomeViews objects</td></tr>
+</table>
+
+<h2><a name="V">-- V --</a></h2>
+
+<table width="100%">
+<tr><td style="width: 25%;"><a href="BSgenome-utils.html">vcountPattern-method</a></td>
+<td>BSgenome utilities</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenome-utils.html">vcountPDict-method</a></td>
+<td>BSgenome utilities</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">Views-method</a></td>
+<td>BSgenomeViews objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenome-utils.html">vmatchPattern-method</a></td>
+<td>BSgenome utilities</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenome-utils.html">vmatchPDict-method</a></td>
+<td>BSgenome utilities</td></tr>
+</table>
+
+<h2><a name="W">-- W --</a></h2>
+
+<table width="100%">
+<tr><td style="width: 25%;"><a href="BSgenomeViews-class.html">width-method</a></td>
+<td>BSgenomeViews objects</td></tr>
+</table>
+
+<h2><a name="X">-- X --</a></h2>
+
+<table width="100%">
+<tr><td style="width: 25%;"><a href="XtraSNPlocs-class.html">XtraSNPlocs</a></td>
+<td>XtraSNPlocs objects</td></tr>
+<tr><td style="width: 25%;"><a href="XtraSNPlocs-class.html">XtraSNPlocs-class</a></td>
+<td>XtraSNPlocs objects</td></tr>
+</table>
+
+<h2><a name="misc">-- misc --</a></h2>
+
+<table width="100%">
+<tr><td style="width: 25%;"><a href="BSgenome-class.html">$-method</a></td>
+<td>BSgenome objects</td></tr>
+<tr><td style="width: 25%;"><a href="BSgenome-class.html">[[-method</a></td>
+<td>BSgenome objects</td></tr>
+</table>
+</body></html>
