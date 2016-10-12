@@ -5,7 +5,7 @@ message('Loading application...')
 final <- try({
 
 	setwd(Sys.getenv('FOO'))
-    CONF <- read.dcf('seqplots.dcf', all = TRUE)
+    CONF <- jsonlite::fromJSON('seqplots.json')
     if(is.null(CONF$root)) {
         root <- file.path(path.expand("~"), "SeqPlots_data")
     } else {

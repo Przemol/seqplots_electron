@@ -13,7 +13,17 @@ const path = require('path');
 let mainWindow
 
 function createWindow () {
+
   // Create the browser window.
+  const {session} = require('electron');
+  session.defaultSession.cookies.on('changed', function(event, cookie, cause) {
+  	//var fs = require('fs');
+  	//var cnf = JSON.parse(fs.readFileSync(path.resolve(path.join(__dirname, 'seqplots.json')), 'utf8'));
+  	//eval('cnf.' + cookie.name + '=' + "'" + cookie.value + "'");
+    //fs.writeFileSync(path.resolve(path.join(__dirname, 'seqplots.json')), JSON.stringify(cnf, null, 4), 'utf8');
+    console.log('cooke changed: ' + cookie.name + ' = ' + "'" + cookie.value + "'")
+  });
+  
   mainWindow = new BrowserWindow({
   	width: 1200, height: 1000, frame: false, title: 'SeqPlots', titleBarStyle: 'hidden', backgroundColor: '#FFFFFF'
   });
@@ -30,6 +40,8 @@ function createWindow () {
     mainWindow = null
   })
 }
+
+
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -72,21 +84,13 @@ ipcMain.on('dev-tools', function(event, arg) {
 });
 
 ipcMain.on('choose-path', function(event, arg) {
-  // Open the DevTools.
+  fs = require('fs');
+  var cnf = JSON.parse(fs.readFileSync(path.resolve(path.join(__dirname, 'seqplots.json')), 'utf8'));
   const {dialog} = require('electron')
-  var path = dialog.showOpenDialog({properties: ['openDirectory']});
-  fs = require('fs')
-  var dd;
-  fs.readFile(path.resolve(path.join(__dirname, 'seqplots.dcf')), 'utf8', function (err,data) {
-	  if (err) {
-		return alert(err);
-	  }
-	  dd = data;
-  });
-
+  cnf.root = dialog.showOpenDialog({properties: ['openDirectory']});
+  fs.writeFileSync(path.resolve(path.join(__dirname, 'seqplots.json')), JSON.stringify(cnf, null, 4), 'utf8');
+  mainWindow.reload();
 });
-
-
 
  
 ipcMain.on('help', function(event, arg) {
@@ -112,6 +116,15 @@ ipcMain.on('help', function(event, arg) {
     help = null
   })
 });
+
+ipcMain.on('cookie', function(event, arg) {
+  const ses = mainWindow.webContents.session;
+  ses.defaultSession.cookies.get({}, (error, cookies) => {
+    console.log(error, cookies)
+  });
+});
+
+
 
 
 

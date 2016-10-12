@@ -77,14 +77,22 @@
                                 <div class="col-xs-4 text-right">
                                     	<button data-toggle="modal" data-target="#mobile"
                                         style="-webkit-app-region:no-drag" class="btn btn-xs btn-info">Mobile/remote access</button>
+                                        
+                                        <button onclick="ipcRenderer.send('cookie', true)"
+                                        style="-webkit-app-region:no-drag" class="btn btn-xs">cookie</button>
+                                        
                                         <button onclick="ipcRenderer.send('choose-path', true)"
                                         style="-webkit-app-region:no-drag" class="btn btn-xs">ChooseRootPath</button>
+                                        
                                         <button onclick="ipcRenderer.send('dev-tools', true)"
                                         style="-webkit-app-region:no-drag" class="btn btn-xs">DevTools</button>
+                                        
                                         <button onclick="document.getElementById('mapview').loadURL(addr)"
                                         style="-webkit-app-region:no-drag" class="btn btn-xs btn-warning">Quick reload</button>
+                                        
                                         <button onclick="ipcRenderer.send('seqplots-dead', true)"
                                         style="-webkit-app-region:no-drag" class="btn btn-xs btn-danger">Exit</button>
+                                        
                                 </div>
                             </div>
                         </div>
@@ -134,11 +142,6 @@
     </body>
 
   <script>
-  	const electron = require('electron')
-	// Module to control application life.
-	const app = electron.app
-	// Module to create native browser window.
-	const BrowserWindow = electron.BrowserWindow
 
 	var ngrok = require('ngrok');
 	window.$ = window.jQuery = require('jquery');
