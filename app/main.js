@@ -16,11 +16,21 @@ function createWindow () {
 
   // Create the browser window.
   const {session} = require('electron');
-  session.defaultSession.cookies.on('changed', function(event, cookie, cause) {
-  	//var fs = require('fs');
-  	//var cnf = JSON.parse(fs.readFileSync(path.resolve(path.join(__dirname, 'seqplots.json')), 'utf8'));
-  	//eval('cnf.' + cookie.name + '=' + "'" + cookie.value + "'");
-    //fs.writeFileSync(path.resolve(path.join(__dirname, 'seqplots.json')), JSON.stringify(cnf, null, 4), 'utf8');
+  var ses = session.fromPartition('persist:seqplots');
+  ses.cookies.on('changed', function(event, cookie, cause) {
+  	var fs = require('fs');
+  	var cnf = JSON.parse(fs.readFileSync(path.resolve(path.join(__dirname, 'seqplots.json')), 'utf8'));
+  	eval('cnf.' + cookie.name + '=' + "'" + cookie.value + "'");
+    fs.writeFileSync(path.resolve(path.join(__dirname, 'seqplots.json')), JSON.stringify(cnf, null, 4), 'utf8');
+    
+    //var expiration = new Date();
+    //var hour = expiration.getHours();
+    //hour = hour + (24*365*3);
+    //expiration.setHours(hour);
+    //cookie.expirationDate = expiration.getTime();
+    //ses.cookies.set(cookie, function (error) {
+    //   console.log(error);
+    //});
     console.log('cooke changed: ' + cookie.name + ' = ' + "'" + cookie.value + "'")
   });
   
