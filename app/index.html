@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>SeqPlots</title>
-    
+
             <style>
                 html, body {
                     height: 100%;
@@ -11,8 +11,8 @@
                     overflow: hidden;
                 }
                      </style>
-    
-    
+
+
   </head>
 	<link href="bootstrap.min.css" rel="stylesheet">
 	<script src="./qrcode.js"></script>
@@ -58,33 +58,33 @@
             <div id="header">
                 <div class="row text-center">
                     <div class="col-xs-12" id="top-nav">
-                        <div id="control">
-                            <div class="row"  style="-webkit-app-region: drag">
+                        <div id="control" style="-webkit-app-region: drag">
+                            <div class="row">
                                 <span id="update-notice" style="display:none;">
                                     <a href="#" onclick="startUpdate()" style="color: #f00">
                                         Update available, click here to install
                                     </a>
                                 </span>
                                 <div class="col-xs-4 text-left">
-                                    
+
                                 </div>
                                 <div class="col-xs-4 text-center">
                                 	Status:
-                                    <a href="#" class="btn btn-xs btn-default" id="api-status-waiting">Waiting</a>
-                                    <a href="#" onclick="restartSeqPlots()" class="btn btn-xs btn-danger" id="api-status-down">SeqPlots stopped (click to restart)</a>
-                                    <a href="#" class="btn btn-xs btn-success" id="api-status-up">SeqPlots running</a>
+                                    <a href="#" class="btn btn-xs btn-default" id="api-status-waiting"  style="-webkit-app-region:no-drag">Waiting</a>
+                                    <a href="#" onclick="restartSeqPlots()" class="btn btn-xs btn-danger" id="api-status-down" style="-webkit-app-region:no-drag">SeqPlots stopped (click to restart)</a>
+                                    <a href="#" class="btn btn-xs btn-success" id="api-status-up" style="-webkit-app-region:no-drag">SeqPlots running</a>
                                 </div>
                                 <div class="col-xs-4 text-right">
                                     	<button data-toggle="modal" data-target="#mobile"
-                                        class="btn btn-xs btn-info">Mobile/remote access</button>
+                                        style="-webkit-app-region:no-drag" class="btn btn-xs btn-info">Mobile/remote access</button>
                                         <button onclick="ipcRenderer.send('choose-path', true)"
-                                        class="btn btn-xs">ChooseRootPath</button>
+                                        style="-webkit-app-region:no-drag" class="btn btn-xs">ChooseRootPath</button>
                                         <button onclick="ipcRenderer.send('dev-tools', true)"
-                                        class="btn btn-xs">DevTools</button>
+                                        style="-webkit-app-region:no-drag" class="btn btn-xs">DevTools</button>
                                         <button onclick="document.getElementById('mapview').loadURL(addr)"
-                                        class="btn btn-xs btn-warning">Quick reload</button>
+                                        style="-webkit-app-region:no-drag" class="btn btn-xs btn-warning">Quick reload</button>
                                         <button onclick="ipcRenderer.send('seqplots-dead', true)"
-                                        class="btn btn-xs btn-danger">Exit</button>
+                                        style="-webkit-app-region:no-drag" class="btn btn-xs btn-danger">Exit</button>
                                 </div>
                             </div>
                         </div>
@@ -142,96 +142,106 @@
 
 	var ngrok = require('ngrok');
 	window.$ = window.jQuery = require('jquery');
-  
+
     var bst = require('bootstrap');
     const spawn = require('child_process').spawn;
     const path = require('path');
     const {ipcRenderer} = require('electron')
-    
+
     const pythonCmd = path.join(__dirname, 'script')
-    const RHOME = path.join(__dirname, 'Rmac/Resources')
-    const R_HOME_DIR = path.join(__dirname, 'Rmac/Resources')
-    const INIT = path.join(__dirname, 'init')
-    const RSCRIPT = path.join(__dirname, 'Rmac/Resources/bin/Rscript')
-    
+
   	var addr;
     var ls;
-    
+
     restartSeqPlots = function() {
-    
-		$('#loading').show();
-		$('#api-status-waiting').show();
-		$('#api-status-up,#api-status-down').hide();
-	
-		ls = spawn(RSCRIPT, [INIT], {env: {'FOO': __dirname, 'RHOME': RHOME, 'R_HOME_DIR': R_HOME_DIR}}, { detached: true });
-	
-		ipcRenderer.send('pid-message', ls.pid);
+
+      const RHOME = path.join(__dirname, 'Rmac/Resources')
+      const R_HOME_DIR = path.join(__dirname, 'Rmac/Resources')
+      const INIT = path.join(__dirname, 'init')
+      var RSCRIPT;
+      if(/^win/.test(process.platform)) {
+        RSCRIPT = path.join(__dirname, 'Rwin/R-Portable/App/R-Portable/bin/x64/Rscript.exe')
+      } else {
+        RSCRIPT = path.join(__dirname, 'Rmac/Resources/bin/Rscript')
+      }
+
+  		$('#loading').show();
+  		$('#api-status-waiting').show();
+  		$('#api-status-up,#api-status-down').hide();
+
+  		ls = spawn(RSCRIPT, [INIT], {env: {'FOO': __dirname, 'RHOME': RHOME, 'R_HOME_DIR': R_HOME_DIR}}, { detached: true });
+
+  		ipcRenderer.send('pid-message', ls.pid);
 
 
-		ls.stdout.on('data', (data) => {
-			console.log(`stdout: ${data}`);
-			//mainWindow.webContents.send('pythonLog', {'msg': `${data}`});
-		});
-	
-
-		ls.stderr.on('data', (data) => {
-			console.log(`stderr: ${data}`);
-			if( `${data}`.match('Listening on ') ) {
-				addr = `${data}`.replace("Listening on ", "");
-				document.getElementById('mapview').loadURL(addr);
-				
-				//mainWindow = new BrowserWindow({width: 800, height: 600});
-				//ipcRenderer.send('addr-change', addr);
-				
-			} else if (`${data}`.match('Running at ')) {
-				$('#loading').html("<h3>Loading, please wait...</h3>");
-				$('#loading').hide();
-				$('#control').show();
-				$('#api-status-waiting,#api-status-down').hide();
-				$('#api-status-up').show();
-			} else if (`${data}`.match('Loading ')) {
-				$('#loading').append('<h5>' + `${data}` + '</h5>')
-			}
-			//mainWindow.webContents.send('pythonLog', {'msg': `${data}`});
-		});
+  		ls.stdout.on('data', (data) => {
+  			console.log(`stdout: ${data}`);
+  			//mainWindow.webContents.send('pythonLog', {'msg': `${data}`});
+  		});
 
 
-		ls.on('close', (code) => {
-			console.log(`child process exited with code ${code}`);
-			//ipcRenderer.send('seqplots-dead', true);
-			$('#api-status-up').hide();
-			$('#api-status-down').show();
-		
-		});
-	
+  		ls.stderr.on('data', (data) => {
+  			console.log(`stderr: ${data}`);
+  			if( `${data}`.match('Listening on ') ) {
+  				addr = `${data}`.replace("Listening on ", "");
+  				document.getElementById('mapview').loadURL(addr);
+
+  				//mainWindow = new BrowserWindow({width: 800, height: 600});
+  				//ipcRenderer.send('addr-change', addr);
+
+  			} else if (`${data}`.match('Running at ')) {
+  				$('#loading').html("<h3>Loading, please wait...</h3>");
+  				$('#loading').hide();
+  				$('#control').show();
+  				$('#api-status-waiting,#api-status-down').hide();
+  				$('#api-status-up').show();
+  			} else if (`${data}`.match('Loading ')) {
+  				$('#loading').append('<h5>' + `${data}` + '</h5>')
+  			}
+  			//mainWindow.webContents.send('pythonLog', {'msg': `${data}`});
+  		});
+
+  		ls.on('close', (code) => {
+  			console.log(`child process exited with code ${code}`);
+  			//ipcRenderer.send('seqplots-dead', true);
+  			$('#api-status-up').hide();
+  			$('#api-status-down').show();
+
+  		});
+
+  	}
+
+	if(/^win/.test(process.platform)) {
+    restartSeqPlots();
+	} else {
+		restartSeqPlots();
 	}
-	
-	restartSeqPlots()
-	
+
+
 	var mobile = false;
 	toggleMobile = function() {
-	
+
 	if(mobile) {
 		ngrok.disconnect();
 		mobile = false;
 		$('.sharing-on').hide();
 		$('#not-sharing').show();
-		
+
 	} else {
-	
+
 		var port = parseInt(addr.replace('http://127.0.0.1:', ''))
-		ngrok.connect(port, function (err, url) { 
-			alert(url) 
+		ngrok.connect(port, function (err, url) {
+			alert(url)
 			$('#sharing-url').html(url);
 			$("#sharing-url").attr("href", url);
 			$('.sharing-on').show();
-			
+
 		$("#mobileToggle").prop("disabled",false);
         $('#not-sharing').hide();
         $('.sharing-on').show();
         $('#sharing-url').attr('target', '_blank');
         $('#qrcode').html('');
-        
+
         new QRCode(
             document.getElementById("qrcode"), {
                 text: url,
@@ -239,12 +249,12 @@
                 height: 128
             });
         mobile = true;
-        
+
 		})
 	}}
 
   </script>
-  
 
-  
+
+
 </html>
