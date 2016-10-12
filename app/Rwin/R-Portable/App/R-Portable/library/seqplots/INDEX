@@ -1,0 +1,15 @@
+MotifSetup-class        MotifSetup Reference Class
+PlotSetArray-class      PlotSetArray Reference Class
+PlotSetList-class       PlotSetList Reference Class
+PlotSetPair-class       PlotSetPair Reference Class
+getPlotSetArray         Process genomic signal
+plot                    Generic plot function for SeqPlots package
+                        calsses
+plotAverage             Create the average plot
+plotHeatmap             Plot heatmap with optional clustering
+run                     SeqPlots innitiation
+seqplots                SeqPlots - An interactive tool for visualizing
+                        NGS signals and sequence motif densities along
+                        genomic features using average plots and
+                        heatmaps.
+seqplots-generic        SeqPlots generic methods
