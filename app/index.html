@@ -159,20 +159,22 @@
 
     var fs = require('fs');
     var cnf = JSON.parse(fs.readFileSync(path.resolve(path.join(__dirname, 'seqplots.json')), 'utf8'));
-
+	
     var array = $.map(cnf, function(value, index) {
-      currentSession.set({
-          name: index,
-          url: 'http://127.0.0.1',
-          value: value,
-          expirationDate: expiration.getTime()
-      }, function(error) {
-          console.log('Cookie set');
-          if (error) {
-              console.dir(error);
-          }
-      });
-      console.log(index, '-', value);
+      if(["skip_tutoial", "genome", "user", "warn"].indexOf(index) >= 0) {
+		  currentSession.set({
+			  name: index,
+			  url: 'http://127.0.0.1',
+			  value: value,
+			  expirationDate: expiration.getTime()
+		  }, function(error) {
+			  console.log('Cookie set');
+			  if (error) {
+				  console.dir(error);
+			  }
+		  });
+		  console.log(index, '-', value);
+      }
     });
 
     const pythonCmd = path.join(__dirname, 'script')
