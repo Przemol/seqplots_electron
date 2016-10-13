@@ -78,15 +78,15 @@
                                     	<button data-toggle="modal" data-target="#mobile"
                                         style="-webkit-app-region:no-drag" class="btn btn-xs btn-info">Mobile/remote access</button>
 
+                                        <button onclick="ipcRenderer.send('choose-path', true)"
+                                        style="-webkit-app-region:no-drag" class="btn btn-xs">Choose Root path</button>
+<!--
                                         <button onclick="ipcRenderer.send('cookie', true)"
                                         style="-webkit-app-region:no-drag" class="btn btn-xs">cookie</button>
 
-                                        <button onclick="ipcRenderer.send('choose-path', true)"
-                                        style="-webkit-app-region:no-drag" class="btn btn-xs">ChooseRootPath</button>
-
                                         <button onclick="ipcRenderer.send('dev-tools', true)"
                                         style="-webkit-app-region:no-drag" class="btn btn-xs">DevTools</button>
-
+-->
                                         <button onclick="document.getElementById('mapview').loadURL(addr)"
                                         style="-webkit-app-region:no-drag" class="btn btn-xs btn-warning">Quick reload</button>
 
