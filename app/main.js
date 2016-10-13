@@ -3,10 +3,24 @@ const electron = require('electron')
 const {app, Menu} = require('electron')
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
-
 const {ipcMain} = require('electron')
-
 const path = require('path');
+// Updater
+const autoUpdater = electron.autoUpdater;
+const os = require('os');
+
+var platform = os.platform() + '_' + os.arch();
+var version = app.getVersion();
+
+try {
+  console.log('https://spup.herokuapp.com/'+platform+'/'+version);
+  autoUpdater.setFeedURL('https://spup.herokuapp.com/'+platform+'/'+version);
+} catch (e) {console.log(e)}
+
+autoUpdater.on('update-downloaded', function(){
+  console.log('update');
+  mainWindow.webContents.send('update-ready');
+});
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -34,11 +48,17 @@ function createWindow () {
     //});
     console.log('cooke changed: ' + cookie.name + ' = ' + "'" + cookie.value + "'")
   });
-
+  
   mainWindow = new BrowserWindow({
   	width: 1200, height: 1000, frame: false, title: 'SeqPlots', titleBarStyle: 'hidden', backgroundColor: '#FFFFFF'
   });
   mainWindow.maximize();
+  
+  mainWindow.webContents.once("did-frame-finish-load", function (e) {
+    try {
+      autoUpdater.checkForUpdates();
+    } catch (e) {}
+  });
 
   // and load the index.html of the app.
   mainWindow.loadURL(`file://${__dirname}/index.html`)
@@ -305,7 +325,9 @@ ipcMain.on('cookie', function(event, arg) {
   });
 });
 
-
+ipcMain.on('installUpdate', function(event) {
+  autoUpdater.quitAndInstall();
+});
 
 
 
