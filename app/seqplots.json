@@ -1,9 +1,9 @@
 {
     "version": "2.0.3",
     "askupdate": "TRUE",
-    "tutrorial": true,
     "skip_tutoial": "true",
     "genome": "ce10",
-    "user": "zz",
-    "warn": "true"
+    "user": "ps",
+    "warn": "true",
+    "someCookie": "myValue"
 }

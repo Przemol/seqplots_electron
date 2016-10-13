@@ -17,12 +17,13 @@ function createWindow () {
   // Create the browser window.
   const {session} = require('electron');
   var ses = session.fromPartition('persist:seqplots');
+
   ses.cookies.on('changed', function(event, cookie, cause) {
   	var fs = require('fs');
   	var cnf = JSON.parse(fs.readFileSync(path.resolve(path.join(__dirname, 'seqplots.json')), 'utf8'));
   	eval('cnf.' + cookie.name + '=' + "'" + cookie.value + "'");
     fs.writeFileSync(path.resolve(path.join(__dirname, 'seqplots.json')), JSON.stringify(cnf, null, 4), 'utf8');
-    
+
     //var expiration = new Date();
     //var hour = expiration.getHours();
     //hour = hour + (24*365*3);
@@ -33,7 +34,7 @@ function createWindow () {
     //});
     console.log('cooke changed: ' + cookie.name + ' = ' + "'" + cookie.value + "'")
   });
-  
+
   mainWindow = new BrowserWindow({
   	width: 1200, height: 1000, frame: false, title: 'SeqPlots', titleBarStyle: 'hidden', backgroundColor: '#FFFFFF'
   });
@@ -102,7 +103,7 @@ ipcMain.on('choose-path', function(event, arg) {
   mainWindow.reload();
 });
 
- 
+
 ipcMain.on('help', function(event, arg) {
   console.log('Setting url to:', arg);
   help = new BrowserWindow({
