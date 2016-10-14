@@ -3,78 +3,23 @@ message('Loading application...')
 #message('PROGRESS:10')
 
 final <- try({
-
-	setwd(Sys.getenv('FOO'))
+  message(getwd())
+	#setwd(Sys.getenv('FOO'))
     CONF <- jsonlite::fromJSON('seqplots.json')
     if(is.null(CONF$root)) {
         root <- file.path(path.expand("~"), "SeqPlots_data")
     } else {
         root <- CONF$root
     }
-    
-    if( as.logical(CONF$askupdate) ) { try({    	
-		txt <- httr::content(httr::GET(
-            'https://raw.githubusercontent.com/Przemol/seqplots_osx/master/SeqPlots.app/Contents/Resources/seqplots.dcf'
-        ))		
-		new <- read.dcf(textConnection(txt), all=TRUE)$version
-		if( as.package_version(new) > as.package_version(CONF$version) ) {
-		upd <- system(paste0(
-            'CocoaDialog.app/Contents/MacOS/CocoaDialog msgbox --title "Update Available" ',
-		    '--text "SeqPlots OS X boundle version ', new, ' is now available." ',
-            '--informative-text "You are using version ', CONF$version, '" ',     	
-		    '--button1 "Quit and Download" --button2 "Remind later" --button3 "Ignore updates" --float'), 		
-		   intern=TRUE)
-			if( upd == 1 ) {
-			    browseURL('https://github.com/Przemol/seqplots_osx/releases/latest')
-			    quit(save = "no")
-			} else if ( upd == 3 ) {
-			    CONF$askupdate <- FALSE
-			    write.dcf(CONF, 'seqplots.dcf')
-			}
-		}		
-	})}
-    
-	#set up rooth here
-    
-# 		
-# 	a=2
-# 	while (a!=1) {
-# 		a=system(paste0(
-#             'CocoaDialog.app/Contents/MacOS/CocoaDialog msgbox --text "SeqPlots v',
-#             packageVersion('seqplots'), 
-#             ' (Mac OS X bundle version: ',
-#             CONF$version,
-#             ')" --informative-text "', 
-#             'Data location: ', 
-#             root, 
-# 		    '" --button1 "START" --button2 "Quit" --button3 "Change data location" --title "SeqPlots Setup" --icon info --float'
-#         ), intern=TRUE)
-# 		if(a==2) {
-# 		    quit(save = "no")
-# 		}
-# 		if(a==3) {
-# 			a3=system('CocoaDialog.app/Contents/MacOS/CocoaDialog fileselect --select-only-directories --title "Select data location..."', intern=TRUE)
-# 			if(length(a3) > 0) {
-#                 root <- a3
-#                 CONF$root <- root
-#                 write.dcf(CONF, 'seqplots.dcf')
-# 			}
-# 		}
-# 	}
-
-	#message('Data loaction: ', root)
-	#message('Loading packages...')
 	
 	if( file.exists('demo_home') ) {
 	    message('Loading demo files and genomes...')
-	    #message('PROGRESS:15')
 	    if(!file.exists(root)) dir.create(root)
 	    
 	    if( file.exists(file.path(root, 'files.sqlite')) ) {
-	        suppressPackageStartupMessages( library(RSQLite) )
+	        library(RSQLite, quietly=TRUE)
 	        sqlite    <- dbDriver("SQLite")
 	        olddb <- dbConnect(sqlite,file.path(root, 'files.sqlite'))
-	        
 	        
 	        if (!any(grepl('demo', dbReadTable(olddb, 'files')$user))) {
 	            message('Adding demo entries to existing database')
@@ -91,36 +36,23 @@ final <- try({
     	        }
 	        }
 	        dbDisconnect(olddb)
-	        
 	        cp <- file.copy(dir('demo_home', full.names = TRUE), root, recursive = TRUE, overwrite = FALSE)
 	    }
 	        
 	}
 	
 	message('Loading packages...')
-	#message('PROGRESS:25')
-	#suppressPackageStartupMessages( library(GenomicRanges) )
-	#message('PROGRESS:50')
-	#suppressPackageStartupMessages( library(rtracklayer) )
-	#message('PROGRESS:70')
-	#message('Loading web interface...')
-	#suppressPackageStartupMessages( library(shiny) )
-	#message('PROGRESS:75')
-	
 	suppressPackageStartupMessages( library(seqplots) )
 	message('Loading web interface...')
-	
-	#message('DETAILS:SHOW')
-	#message('PROGRESS:100\n')
-	
 	seqplots::run( root = root, launch.browser = FALSE )
 })
 
 if( class(final) == "try-error" ) {
-	if( system(paste0('CocoaDialog.app/Contents/MacOS/CocoaDialog msgbox --text "Error occurred. SeqPlots will terminate."', 
-		' --informative-text "Please investigate *details* on SeqPlots diagnostic window for more information. Last error message:\n\n',  
-		attributes(final)$condition$message, '" --button1 "OK"  --button3 "Report Issue" --title "ERRER" --icon x --float'), 
-	intern=TRUE) == 3) {
-		browseURL('https://github.com/Przemol/seqplots/issues/new')
-	}
+#if( system(paste0('CocoaDialog.app/Contents/MacOS/CocoaDialog msgbox --text "Error occurred. SeqPlots will terminate."', 
+		#' --informative-text "Please investigate *details* on SeqPlots diagnostic window for more information. Last error message:\n\n',  
+		#attributes(final)$condition$message, '" --button1 "OK"  --button3 "Report Issue" --title "ERRER" --icon x --float'), 
+	#intern=TRUE) == 3) {
+		#browseURL('https://github.com/Przemol/seqplots/issues/new')
+	#}
+  stop(final)
 }

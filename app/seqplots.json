@@ -1,12 +1,9 @@
 {
-    "version": "2.0.3",
+    "version": "3.0.5",
     "askupdate": "TRUE",
     "skip_tutoial": "true",
     "genome": "ce10",
-    "user": "ps",
+    "user": "",
     "warn": "true",
-    "someCookie": "myValue",
-    "root": [
-        "/Users/przemol/SeqPlots_data"
-    ]
+    "root": "/Users/przemol/SeqPlots_data2"
 }

@@ -162,18 +162,17 @@
 	
     var array = $.map(cnf, function(value, index) {
       if(["skip_tutoial", "genome", "user", "warn"].indexOf(index) >= 0) {
-		  currentSession.set({
-			  name: index,
-			  url: 'http://127.0.0.1',
-			  value: value,
-			  expirationDate: expiration.getTime()
-		  }, function(error) {
-			  console.log('Cookie set');
-			  if (error) {
-				  console.dir(error);
-			  }
-		  });
-		  console.log(index, '-', value);
+  		  currentSession.set({
+  			  name: index,
+  			  url: 'http://127.0.0.1',
+  			  value: value,
+  			  expirationDate: expiration.getTime()
+  		  }, function(error) {
+  			  console.log('Cookie set: ', index, '-', value);
+  			  if (error) {
+  				  console.dir(error);
+  			  }
+  		  });
       }
     });
 
@@ -214,7 +213,7 @@
   			if( `${data}`.match('Listening on ') ) {
   				addr = `${data}`.replace("Listening on ", "");
   				document.getElementById('mapview').loadURL(addr);
-
+          ipcRenderer.send('seqplotsrunning', true);
   				//mainWindow = new BrowserWindow({width: 800, height: 600});
   				//ipcRenderer.send('addr-change', addr);
 
@@ -226,6 +225,8 @@
   				$('#api-status-up').show();
   			} else if (`${data}`.match('Loading ')) {
   				$('#loading').append('<h5>' + `${data}` + '</h5>')
+  			} else if (`${data}`.match('Error ')) {
+  				$('#loading').append('<pre>' + `${data}` + '</pre>')
   			}
   			//mainWindow.webContents.send('pythonLog', {'msg': `${data}`});
   		});
@@ -235,6 +236,7 @@
   			//ipcRenderer.send('seqplots-dead', true);
   			$('#api-status-up').hide();
   			$('#api-status-down').show();
+  			ipcRenderer.send('seqplotsrunning', false);
 
   		});
 

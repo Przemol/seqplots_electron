@@ -11,6 +11,7 @@ const os = require('os');
 
 var platform = os.platform() + '_' + os.arch();
 var version = app.getVersion();
+var seqplotsrunning = false;
 
 try {
   console.log('https://spup.herokuapp.com/'+platform+'/'+version);
@@ -33,20 +34,22 @@ function createWindow () {
   var ses = session.fromPartition('persist:seqplots');
 
   ses.cookies.on('changed', function(event, cookie, cause) {
-  	var fs = require('fs');
-  	var cnf = JSON.parse(fs.readFileSync(path.resolve(path.join(__dirname, 'seqplots.json')), 'utf8'));
-  	eval('cnf.' + cookie.name + '=' + "'" + cookie.value + "'");
-    fs.writeFileSync(path.resolve(path.join(__dirname, 'seqplots.json')), JSON.stringify(cnf, null, 4), 'utf8');
-
-    //var expiration = new Date();
-    //var hour = expiration.getHours();
-    //hour = hour + (24*365*3);
-    //expiration.setHours(hour);
-    //cookie.expirationDate = expiration.getTime();
-    //ses.cookies.set(cookie, function (error) {
-    //   console.log(error);
-    //});
-    console.log('cooke changed: ' + cookie.name + ' = ' + "'" + cookie.value + "'")
+    if(["skip_tutoial", "genome", "user", "warn"].indexOf(cookie.name) >= 0 & seqplotsrunning) {
+    	var fs = require('fs');
+    	var cnf = JSON.parse(fs.readFileSync(path.resolve(path.join(__dirname, 'seqplots.json')), 'utf8'));
+    	eval('cnf.' + cookie.name + '=' + "'" + cookie.value + "'");
+      fs.writeFileSync(path.resolve(path.join(__dirname, 'seqplots.json')), JSON.stringify(cnf, null, 4), 'utf8');
+  
+      //var expiration = new Date();
+      //var hour = expiration.getHours();
+      //hour = hour + (24*365*3);
+      //expiration.setHours(hour);
+      //cookie.expirationDate = expiration.getTime();
+      //ses.cookies.set(cookie, function (error) {
+      //   console.log(error);
+      //});
+      console.log('cooke saved to file: ' + cookie.name + ' = ' + "'" + cookie.value + "'")
+    }
   });
   
   mainWindow = new BrowserWindow({
@@ -288,7 +291,7 @@ ipcMain.on('choose-path', function(event, arg) {
   fs = require('fs');
   var cnf = JSON.parse(fs.readFileSync(path.resolve(path.join(__dirname, 'seqplots.json')), 'utf8'));
   const {dialog} = require('electron')
-  cnf.root = dialog.showOpenDialog({properties: ['openDirectory']});
+  cnf.root = dialog.showOpenDialog({properties: ['openDirectory']})[0];
   fs.writeFileSync(path.resolve(path.join(__dirname, 'seqplots.json')), JSON.stringify(cnf, null, 4), 'utf8');
   mainWindow.reload();
 });
@@ -353,6 +356,13 @@ app.on('before-quit', function() {
     killProcess(pid);
   });
 });
+
+ipcMain.on('seqplotsrunning', function(event, arg) {
+    console.log('Seqplots is running: ', arg)
+  	seqplotsrunning = arg;
+});
+
+
 
 ipcMain.on('seqplots-dead', function(event, arg) {
   	console.log('See you next time!');
