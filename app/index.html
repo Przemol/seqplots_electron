@@ -226,6 +226,8 @@
   			} else if (`${data}`.match('Loading ')) {
   				$('#loading').append('<h5>' + `${data}` + '</h5>')
   			} else if (`${data}`.match('Error ')) {
+  			  $('#loading').html('<h3 style="color: red;">Error accured!</h3>');
+  			  $('#loading').append('<h5>Please report the issue <a href="https://github.com/Przemol/seqplots/issues/new">here</a>, including following error messages:</h5>');
   				$('#loading').append('<pre>' + `${data}` + '</pre>')
   			}
   			//mainWindow.webContents.send('pythonLog', {'msg': `${data}`});

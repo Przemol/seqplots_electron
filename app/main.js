@@ -14,8 +14,8 @@ var version = app.getVersion();
 var seqplotsrunning = false;
 
 try {
-  console.log('https://spup.herokuapp.com/'+platform+'/'+version);
-  autoUpdater.setFeedURL('https://spup.herokuapp.com/'+platform+'/'+version);
+  //console.log('https://spup.herokuapp.com/'+platform+'/'+version);
+  //autoUpdater.setFeedURL('https://spup.herokuapp.com/'+platform+'/'+version);
 } catch (e) {console.log(e)}
 
 autoUpdater.on('update-downloaded', function(){
@@ -291,9 +291,13 @@ ipcMain.on('choose-path', function(event, arg) {
   fs = require('fs');
   var cnf = JSON.parse(fs.readFileSync(path.resolve(path.join(__dirname, 'seqplots.json')), 'utf8'));
   const {dialog} = require('electron')
-  cnf.root = dialog.showOpenDialog({properties: ['openDirectory']})[0];
-  fs.writeFileSync(path.resolve(path.join(__dirname, 'seqplots.json')), JSON.stringify(cnf, null, 4), 'utf8');
-  mainWindow.reload();
+  var ans = dialog.showOpenDialog({properties: ['openDirectory']});
+  if(ans) {
+    cnf.root = ans[0];
+    fs.writeFileSync(path.resolve(path.join(__dirname, 'seqplots.json')), JSON.stringify(cnf, null, 4), 'utf8');
+    mainWindow.reload();
+  }
+
 });
 
 

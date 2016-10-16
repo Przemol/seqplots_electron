@@ -3,9 +3,10 @@ message('Loading application...')
 #message('PROGRESS:10')
 
 final <- try({
-  message(getwd())
-	#setwd(Sys.getenv('FOO'))
-    CONF <- jsonlite::fromJSON('seqplots.json')
+    message(getwd())
+	  setwd(Sys.getenv('FOO'))
+    
+	  CONF <- jsonlite::fromJSON('seqplots.json')
     if(is.null(CONF$root)) {
         root <- file.path(path.expand("~"), "SeqPlots_data")
     } else {

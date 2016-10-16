@@ -1,6 +1,6 @@
 {
   "name": "SeqPlots",
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "h An interactive tool for visualizing NGS signals and sequence motif densities along genomic features using average plots and heatmaps.",
   "main": "main.js",
   "repository": "Przemol/seqplots_electron",
