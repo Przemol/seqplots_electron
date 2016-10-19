@@ -38,6 +38,8 @@ final <- try({
 	        }
 	        dbDisconnect(olddb)
 	        cp <- file.copy(dir('demo_home', full.names = TRUE), root, recursive = TRUE, overwrite = FALSE)
+	    } else {
+	    	  cp <- file.copy(dir('demo_home', full.names = TRUE), root, recursive = TRUE, overwrite = FALSE)
 	    }
 	        
 	}
