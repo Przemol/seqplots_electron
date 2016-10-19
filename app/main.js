@@ -142,7 +142,14 @@ function createWindow () {
       },
       {
         role: 'togglefullscreen'
-      }
+      },
+      {
+        label: 'Remote/mobile access',
+        accelerator: process.platform === 'darwin' ? 'Alt+Command+I' : 'Ctrl+Shift+I',
+        click (item, focusedWindow) {
+          if (focusedWindow) focusedWindow.webContents.executeJavaScript(`$('#mobile').modal();`)
+        }
+     }
     ]
   },
   {
