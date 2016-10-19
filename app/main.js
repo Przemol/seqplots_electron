@@ -8,6 +8,7 @@ const path = require('path');
 // Updater
 const autoUpdater = electron.autoUpdater;
 const os = require('os');
+if(require('electron-squirrel-startup')) return;
 
 var platform = os.platform() + '_' + os.arch();
 var version = app.getVersion();
@@ -39,7 +40,7 @@ function createWindow () {
     	var cnf = JSON.parse(fs.readFileSync(path.resolve(path.join(__dirname, 'seqplots.json')), 'utf8'));
     	eval('cnf.' + cookie.name + '=' + "'" + cookie.value + "'");
       fs.writeFileSync(path.resolve(path.join(__dirname, 'seqplots.json')), JSON.stringify(cnf, null, 4), 'utf8');
-  
+
       //var expiration = new Date();
       //var hour = expiration.getHours();
       //hour = hour + (24*365*3);
@@ -51,12 +52,12 @@ function createWindow () {
       console.log('cooke saved to file: ' + cookie.name + ' = ' + "'" + cookie.value + "'")
     }
   });
-  
+
   mainWindow = new BrowserWindow({
   	width: 1200, height: 1000, frame: false, title: 'SeqPlots', titleBarStyle: 'hidden', backgroundColor: '#FFFFFF'
   });
   mainWindow.maximize();
-  
+
   mainWindow.webContents.once("did-frame-finish-load", function (e) {
     try {
       autoUpdater.checkForUpdates();
@@ -73,7 +74,7 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
-  
+
   const template = [
   {
     label: 'Edit',
@@ -245,7 +246,7 @@ if (process.platform === 'darwin') {
 
 const menu = Menu.buildFromTemplate(template)
 Menu.setApplicationMenu(menu)
-  
+
 }
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.

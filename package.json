@@ -1,6 +1,6 @@
 {
   "name": "SeqPlots",
-  "version": "3.1.6b",
+  "version": "3.1.7b",
   "description": "An interactive tool for visualizing NGS signals and sequence motif densities along genomic features using average plots and heatmaps.",
   "main": "main.js",
   "scripts": {
@@ -28,11 +28,12 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "jquery": "^3.1.0",
-    "ngrok": "^2.2.2"
+    "ngrok": "^2.2.2",
+    "electron-squirrel-startup": "^1.0.0"
   },
   "devDependencies": {
     "electron": "^1.4.3",
-    "electron-builder": "^7.13.0",
+    "electron-builder": "^7.14.1",
     "electron-packager": "^7.5.1",
     "electron-prebuilt": "^1.2.0"
   },
@@ -40,13 +41,20 @@
     "appId": "SeqPlots3",
     "category": "EDA",
     "asar": false,
+    "win": {
+      "target": [
+        "squirrel",
+        "zip",
+        "nsis"
+      ]
+    },
+    "squirrelWindows": {
+      "msi": true
+    },
     "files": [
       "**/*",
       "!R*",
       "R${os}"
-    ],
-    "squirrelWindows": {
-      "msi": true
-    }
+    ]
   }
 }
