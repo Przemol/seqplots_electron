@@ -37,7 +37,7 @@ Imports: methods, IRanges, BSgenome, digest, rtracklayer,
         GenomicRanges, Biostrings, shiny (>= 0.13.0), DBI, RSQLite,
         plotrix, fields, grid, kohonen, parallel, GenomeInfoDb, class,
         S4Vectors, ggplot2, reshape2, gridExtra, jsonlite, DT (>=
-        0.1.0), RColorBrewer
+        0.1.0), RColorBrewer, Rsamtools, GenomicAlignments
 Type: Package
 Date: 2014-09-15
 LazyLoad: yes
@@ -51,14 +51,14 @@ Collate: 'MotifSetup-class.R' 'PlotSetPair-class.R'
         'int_imPlot2.R' 'int_plotMext.R' 'plotAverage.R'
         'plotHeatmap.R' 'run.R' 'seqplots-package.R' 'zzz.R'
 RoxygenNote: 5.0.1
-Built: R 3.2.3; ; 2016-10-20 13:33:09 UTC; unix
+Built: R 3.2.3; ; 2016-10-21 15:14:33 UTC; unix
 RemoteType: github
 RemoteHost: api.github.com
 RemoteRepo: seqplots
 RemoteUsername: przemol
 RemoteRef: master
-RemoteSha: 3f08548d36be8ea7e2b187471ed1a7617bad631e
+RemoteSha: f23d831632abc610f157ac3ab1b3ed062ab9b7f4
 GithubRepo: seqplots
 GithubUsername: przemol
 GithubRef: master
-GithubSHA1: 3f08548d36be8ea7e2b187471ed1a7617bad631e
+GithubSHA1: f23d831632abc610f157ac3ab1b3ed062ab9b7f4
