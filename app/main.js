@@ -54,7 +54,7 @@ function createWindow () {
   });
 
   mainWindow = new BrowserWindow({
-  	width: 1200, height: 1000, frame: false, title: 'SeqPlots', titleBarStyle: 'hidden', backgroundColor: '#FFFFFF'
+  	width: 1200, height: 1000, frame: true, title: 'SeqPlots', titleBarStyle: 'hidden', backgroundColor: '#FFFFFF'
   });
   mainWindow.maximize();
 
