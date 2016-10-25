@@ -1,0 +1,35 @@
+Package: Rsamtools
+Type: Package
+Title: Binary alignment (BAM), FASTA, variant call (BCF), and tabix
+        file import
+Version: 1.26.1
+Author: Martin Morgan, Herv\'e Pag\`es, Valerie Obenchain, Nathaniel Hayden
+Maintainer: Bioconductor Package Maintainer
+ <maintainer@bioconductor.org>
+Description: This package provides an interface to the 'samtools',
+        'bcftools', and 'tabix' utilities (see 'LICENCE') for
+        manipulating SAM (Sequence Alignment / Map), FASTA, binary
+        variant call (BCF) and compressed indexed tab-delimited
+        (tabix) files.
+URL: http://bioconductor.org/packages/release/bioc/html/Rsamtools.html
+License: Artistic-2.0 | file LICENSE
+LazyLoad: yes
+Depends: methods, GenomeInfoDb (>= 1.1.3), GenomicRanges (>= 1.21.6),
+        Biostrings (>= 2.37.1)
+Imports: utils, BiocGenerics (>= 0.1.3), S4Vectors (>= 0.7.11), IRanges
+        (>= 2.3.7), XVector (>= 0.9.1), zlibbioc, bitops, BiocParallel
+Suggests: GenomicAlignments, ShortRead (>= 1.19.10), GenomicFeatures,
+        TxDb.Dmelanogaster.UCSC.dm3.ensGene, KEGG.db,
+        TxDb.Hsapiens.UCSC.hg18.knownGene, RNAseqData.HNRNPC.bam.chr14,
+        BSgenome.Hsapiens.UCSC.hg19, pasillaBamSubset, RUnit, BiocStyle
+LinkingTo: S4Vectors, IRanges, XVector, Biostrings
+biocViews: DataImport, Sequencing, Coverage, Alignment, QualityControl
+Video:
+        https://www.youtube.com/watch?v=Rfon-DQYbWA&list=UUqaMSQd_h-2EDGsU6WDiX0Q
+NeedsCompilation: yes
+Packaged: 2016-10-21 22:37:51 UTC; biocbuild
+Built: R 3.3.1; x86_64-pc-linux-gnu; 2016-10-25 15:31:18 UTC; unix
+RemoteType: cran
+RemoteSha: 1.26.1
+RemoteRepos: structure(c("https://cloud.r-project.org", "https://bioconductor.org/packages/3.4/bioc", "https://bioconductor.org/packages/3.4/data/annotation", "https://bioconductor.org/packages/3.4/data/experiment", "https://bioconductor.org/packages/3.4/extra"), .Names = c("CRAN", "BioCsoft", "BioCann", "BioCexp", "BioCextra"))
+RemotePkgType: source
