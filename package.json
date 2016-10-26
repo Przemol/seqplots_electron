@@ -19,8 +19,12 @@
     "RNA-seq",
     "NGS"
   ],
-  "author": "Przemyslaw Stempor",
-  "license": "",
+  "author": { 
+    "name" : "Przemyslaw Stempor", 
+    "email" : "przemol@github.com",
+    "url" : "przemol.github.com"
+  },
+  "license": "BSD",
   "bugs": {
     "url": "https://github.com/Przemol/seqplots/issues"
   },
@@ -47,6 +51,13 @@
         "squirrel",
         "zip",
         "nsis"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "zip",
+        "deb"
       ]
     },
     "squirrelWindows": {

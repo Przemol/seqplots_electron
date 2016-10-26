@@ -187,19 +187,25 @@
 
       const RHOME = path.join(__dirname, 'Rmac/Resources')
       const R_HOME_DIR = path.join(__dirname, 'Rmac/Resources')
+      const R_HOME = path.join(__dirname, 'Rlinux/lib64/R')
       const INIT = path.join(__dirname, 'init')
       var RSCRIPT;
       if(/^win/.test(process.platform)) {
         RSCRIPT = path.join(__dirname, 'Rwin/R-Portable/App/R-Portable/bin/x64/Rscript.exe')
+        ls = spawn(RSCRIPT, [INIT], {env: {'FOO': __dirname}}, { detached: true });
+      } else if(/^linux/.test(process.platform)) {
+        RSCRIPT = path.join(__dirname, 'Rlinux/lib64/R/bin/Rscript')
+        ls = spawn(RSCRIPT, [INIT], {env: {'FOO': __dirname, 'R_HOME': R_HOME}}, { detached: true });
       } else {
         RSCRIPT = path.join(__dirname, 'Rmac/Resources/bin/Rscript')
+        ls = spawn(RSCRIPT, [INIT], {env: {'FOO': __dirname, 'RHOME': RHOME, 'R_HOME_DIR': R_HOME_DIR}}, { detached: true });
       }
 
   		$('#loading').show();
   		$('#api-status-waiting').show();
   		$('#api-status-up,#api-status-down').hide();
 
-  		ls = spawn(RSCRIPT, [INIT], {env: {'FOO': __dirname, 'RHOME': RHOME, 'R_HOME_DIR': R_HOME_DIR}}, { detached: true });
+  
 
   		ipcRenderer.send('pid-message', ls.pid);
 

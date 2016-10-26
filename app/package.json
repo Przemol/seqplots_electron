@@ -9,7 +9,11 @@
     "RNA-seq",
     "NGS"
   ],
-  "author": "Przemyslaw Stempor",
+    "author": { 
+    "name" : "Przemyslaw Stempor", 
+    "email" : "przemol@github.com",
+    "url" : "przemol.github.com"
+  },
   "license": "",
   "bugs": {
     "url": "https://github.com/Przemol/seqplots/issues"
