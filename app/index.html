@@ -189,10 +189,12 @@
       const R_HOME_DIR = path.join(__dirname, 'Rmac/Resources')
       const R_HOME = path.join(__dirname, 'Rlinux/lib64/R')
       const INIT = path.join(__dirname, 'init')
+      const LD_LIBRARY_PATH = path.join(__dirname, 'Rlinux/lib64/R/lib')
+      
       var RSCRIPT;
       if(/^win/.test(process.platform)) {
         RSCRIPT = path.join(__dirname, 'Rwin/R-Portable/App/R-Portable/bin/x64/Rscript.exe')
-        ls = spawn(RSCRIPT, [INIT], {env: {'FOO': __dirname}}, { detached: true });
+        ls = spawn(RSCRIPT, [INIT], {env: {'FOO': __dirname, 'LD_LIBRARY_PATH': LD_LIBRARY_PATH}}, { detached: true });
       } else if(/^linux/.test(process.platform)) {
         RSCRIPT = path.join(__dirname, 'Rlinux/lib64/R/bin/Rscript')
         ls = spawn(RSCRIPT, [INIT], {env: {'FOO': __dirname, 'R_HOME': R_HOME}}, { detached: true });
