@@ -1,0 +1,3 @@
+#!/bin/bsah
+
+$R_HOME/bin/R --vanilla < $R_HOME/../../../init

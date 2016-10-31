@@ -1,43 +1,13 @@
 #!/bin/sh
 # Shell wrapper for R executable.
 
-R_HOME_DIR=/home/ps562/rport/Rlinux/lib64/R
-if test "${R_HOME_DIR}" = "/home/ps562/rport/Rlinux/lib64/R"; then
-   case "linux-gnu" in
-   linux*)
-     run_arch=`uname -m`
-     case "$run_arch" in
-        x86_64|mips64|ppc64|powerpc64|sparc64|s390x)
-          libnn=lib64
-          libnn_fallback=lib
-        ;;
-        *)
-          libnn=lib
-          libnn_fallback=lib64
-        ;;
-     esac
-     if [ -x "/home/ps562/rport/Rlinux/${libnn}/R/bin/exec/R" ]; then
-        R_HOME_DIR="/home/ps562/rport/Rlinux/${libnn}/R"
-     elif [ -x "/home/ps562/rport/Rlinux/${libnn_fallback}/R/bin/exec/R" ]; then
-        R_HOME_DIR="/home/ps562/rport/Rlinux/${libnn_fallback}/R"
-     ## else -- leave alone (might be a sub-arch)
-     fi
-     ;;
-  esac
-fi
-
-if test -n "${R_HOME}" && \
-   test "${R_HOME}" != "${R_HOME_DIR}"; then
-  echo "WARNING: ignoring environment value of R_HOME"
-fi
-R_HOME="${R_HOME_DIR}"
 export R_HOME
-R_SHARE_DIR=/home/ps562/rport/Rlinux/lib64/R/share
-export R_SHARE_DIR
-R_INCLUDE_DIR=/home/ps562/rport/Rlinux/lib64/R/include
-export R_INCLUDE_DIR
-R_DOC_DIR=/home/ps562/rport/Rlinux/lib64/R/doc
-export R_DOC_DIR
+#R_SHARE_DIR=/home/ps562/rport/Rlinux/lib64/R/share
+#export R_SHARE_DIR
+#R_INCLUDE_DIR=/home/ps562/rport/Rlinux/lib64/R/include
+#export R_INCLUDE_DIR
+#R_DOC_DIR=/home/ps562/rport/Rlinux/lib64/R/doc
+#export R_DOC_DIR
 
 # Since this script can be called recursively, we allow R_ARCH to
 # be overridden from the environment.
