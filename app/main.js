@@ -145,11 +145,16 @@ function createWindow () {
       },
       {
         label: 'Remote/mobile access',
-        accelerator: process.platform === 'darwin' ? 'Alt+Command+I' : 'Ctrl+Shift+I',
         click (item, focusedWindow) {
           if (focusedWindow) focusedWindow.webContents.executeJavaScript(`$('#mobile').modal();`)
         }
-     }
+     },
+     {
+       label: 'SeqPlots debug mode',
+       click (item, focusedWindow) {
+         if (focusedWindow) focusedWindow.webContents.executeJavaScript(`alert("DeBug"); $('#api-status-debug').show(); restartSeqPlots(debug=true);`)
+       }
+    }
     ]
   },
   {

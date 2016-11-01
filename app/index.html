@@ -48,7 +48,7 @@
                 #sharing {
                     color: #093;
                 }
-                .sharing-on, #api-status-down, #api-status-up {
+                .sharing-on, #api-status-down, #api-status-up, #api-status-debug {
                     display: none;
                 }
             </style>
@@ -73,9 +73,10 @@
                                     <a href="#" class="btn btn-xs btn-default" id="api-status-waiting"  style="-webkit-app-region:no-drag">Waiting</a>
                                     <a href="#" onclick="restartSeqPlots()" class="btn btn-xs btn-danger" id="api-status-down" style="-webkit-app-region:no-drag">SeqPlots stopped (click to restart)</a>
                                     <a href="#" class="btn btn-xs btn-success" id="api-status-up" style="-webkit-app-region:no-drag">SeqPlots running</a>
+                                    <a href="#" onclick="restartSeqPlots()" class="btn btn-xs btn-warning" id="api-status-debug" style="-webkit-app-region:no-drag">SeqPlots running in debug mode</a>
                                 </div>
                                 <div class="col-xs-4 text-right">
-                                    	
+
 
                                         <button onclick="ipcRenderer.send('choose-path', true)"
                                         style="-webkit-app-region:no-drag" class="btn btn-xs btn-info">Change data directory</button>
@@ -85,7 +86,7 @@
 
                                         <button onclick="ipcRenderer.send('dev-tools', true)"
                                         style="-webkit-app-region:no-drag" class="btn btn-xs">DevTools</button>
-                                        
+
                                         <button data-toggle="modal" data-target="#mobile"
                                         style="-webkit-app-region:no-drag" class="btn btn-xs btn-info">Mobile/remote access</button>
 -->
@@ -161,7 +162,7 @@
 
     var fs = require('fs');
     var cnf = JSON.parse(fs.readFileSync(path.resolve(path.join(__dirname, 'seqplots.json')), 'utf8'));
-	
+
     var array = $.map(cnf, function(value, index) {
       if(["skip_tutoial", "genome", "user", "warn"].indexOf(index) >= 0) {
   		  currentSession.set({
@@ -183,14 +184,18 @@
   	var addr;
     var ls;
 
-    restartSeqPlots = function() {
+    restartSeqPlots = function(debug=false) {
 
       const RHOME = path.join(__dirname, 'Rmac/Resources')
       const R_HOME_DIR = path.join(__dirname, 'Rmac/Resources')
       const R_HOME = path.join(__dirname, 'Rlinux/lib64/R')
       const INIT = path.join(__dirname, 'init')
       const LD_LIBRARY_PATH = path.join(__dirname, 'Rlinux/lib64/R/lib')
-      
+      var SEQPLOTS_DEBUG = 'TRUE'
+      if(debug) {
+        SEQPLOTS_DEBUG = 'TRUE'
+      }
+
       var RSCRIPT;
       if(/^win/.test(process.platform)) {
         RSCRIPT = path.join(__dirname, 'Rwin/R-Portable/App/R-Portable/bin/x64/Rscript.exe')
@@ -200,14 +205,14 @@
         ls = spawn('/bin/bash', [path.join(__dirname, 'Rlinux_start')], {env: {'FOO': __dirname, 'R_HOME': R_HOME}}, { detached: true });
       } else {
         RSCRIPT = path.join(__dirname, 'Rmac/Resources/bin/Rscript')
-        ls = spawn(RSCRIPT, [INIT], {env: {'FOO': __dirname, 'RHOME': RHOME, 'R_HOME_DIR': R_HOME_DIR}}, { detached: true });
+        ls = spawn(RSCRIPT, [INIT], {env: {'FOO': __dirname, 'RHOME': RHOME, 'R_HOME_DIR': R_HOME_DIR, 'SEQPLOTS_DEBUG': SEQPLOTS_DEBUG}}, { detached: true });
       }
 
   		$('#loading').show();
   		$('#api-status-waiting').show();
   		$('#api-status-up,#api-status-down').hide();
 
-  
+
 
   		ipcRenderer.send('pid-message', ls.pid);
 

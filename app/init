@@ -5,30 +5,30 @@ message('Loading application...')
 final <- try({
     message(getwd())
 	  setwd(Sys.getenv('FOO'))
-    
+
 	  CONF <- jsonlite::fromJSON('seqplots.json')
     if(is.null(CONF$root)) {
         root <- file.path(path.expand("~"), "SeqPlots_data")
     } else {
         root <- CONF$root
     }
-	
+
 	if( file.exists('demo_home') ) {
 	    message('Loading demo files and genomes...')
 	    if(!file.exists(root)) dir.create(root)
-	    
+
 	    if( file.exists(file.path(root, 'files.sqlite')) ) {
 	        library(RSQLite, quietly=TRUE)
 	        sqlite    <- dbDriver("SQLite")
 	        olddb <- dbConnect(sqlite,file.path(root, 'files.sqlite'))
-	        
+
 	        if (!any(grepl('demo', dbReadTable(olddb, 'files')$user))) {
 	            message('Adding demo entries to existing database')
-	            
+
     	        db <- dbConnect(sqlite,"demo_home/files.sqlite")
     	        demo <- dbReadTable(db, 'files')
     	        dbDisconnect(db)
-    	        
+
     	        file.copy(file.path(root, 'files.sqlite'), file.path(root, 'files_backup.sqlite'))
     	        for(i in 1:nrow(demo)) {
     	            sql_string <- paste0("INSERT INTO files (name, ctime, type, format, genome, user, comment) VALUES ('", paste0(demo[i,-1], collapse="','"), "');")
@@ -41,19 +41,19 @@ final <- try({
 	    } else {
 	    	  cp <- file.copy(dir('demo_home', full.names = TRUE), root, recursive = TRUE, overwrite = FALSE)
 	    }
-	        
+
 	}
 	
 	message('Loading packages...')
 	suppressPackageStartupMessages( library(seqplots) )
 	message('Loading web interface...')
-	seqplots::run( root = root, launch.browser = FALSE )
+	seqplots::run( root = root, launch.browser = FALSE, debug = Sys.getenv('SEQPLOTS_DEBUG')!='' )
 })
 
 if( class(final) == "try-error" ) {
-#if( system(paste0('CocoaDialog.app/Contents/MacOS/CocoaDialog msgbox --text "Error occurred. SeqPlots will terminate."', 
-		#' --informative-text "Please investigate *details* on SeqPlots diagnostic window for more information. Last error message:\n\n',  
-		#attributes(final)$condition$message, '" --button1 "OK"  --button3 "Report Issue" --title "ERRER" --icon x --float'), 
+#if( system(paste0('CocoaDialog.app/Contents/MacOS/CocoaDialog msgbox --text "Error occurred. SeqPlots will terminate."',
+		#' --informative-text "Please investigate *details* on SeqPlots diagnostic window for more information. Last error message:\n\n',
+		#attributes(final)$condition$message, '" --button1 "OK"  --button3 "Report Issue" --title "ERRER" --icon x --float'),
 	#intern=TRUE) == 3) {
 		#browseURL('https://github.com/Przemol/seqplots/issues/new')
 	#}
