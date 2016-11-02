@@ -1,6 +1,5 @@
 language: node_js
-node_js:
-  - "4"
+node_js: "4"
 
 matrix:
   include:
@@ -21,4 +20,5 @@ install:
 
 script:
   - ./node_modules/.bin/build
+  - ls dist 
   - ./node_modules/.bin/mocha

@@ -1,12 +1,25 @@
 var Application = require('spectron').Application
 var assert = require('assert')
 
-describe('application launch', function () {
+var os = require('os');
+var sys = os.platform(); // 'darwin'
+console.log('Sysyem: ' + sys + ' ' + os.release());
+
+var path = '';
+
+if(sys=='darwin') {
+  var path = './dist/mac/SeqPlots.app/Contents/MacOS/SeqPlots'
+} else {
+  var path = './dist/linux-unpacked/SeqPlots'
+}
+
+
+describe('==>> Application launch', function () {
   this.timeout(100000)
 
   beforeEach(function () {
     this.app = new Application({
-      path: '/Users/przemol/electron-quick-start/dist/mac/SeqPlots.app/Contents/MacOS/SeqPlots'
+      path: path
     })
     return this.app.start()
   })
@@ -17,15 +30,15 @@ describe('application launch', function () {
     }
   })
 
-  it('shows an initial window', function () {
+  it('Shows an initial window', function () {
     return this.app.client.getWindowCount().then(function (count) {
       assert.equal(count, 2)
     })
   })
 
-  it('shows an initial window', function () {
+  it('Get some controls', function () {
     return this.app.client.getText('#api-status-up').then(function (errorText) {
-      console.log('The #api-status-up text content is ' + errorText)
+      console.log('\tThe #api-status-up text content is ' + errorText)
     })
   })
 
