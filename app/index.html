@@ -65,19 +65,18 @@
                                         Update available, click here to install
                                     </a>
                                 </span>
-                                <div class="col-xs-4 text-left">
 
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                	Status:
-                                    <a href="#" class="btn btn-xs btn-default" id="api-status-waiting"  style="-webkit-app-region:no-drag">Waiting</a>
-                                    <a href="#" onclick="restartSeqPlots()" class="btn btn-xs btn-danger" id="api-status-down" style="-webkit-app-region:no-drag">SeqPlots stopped (click to restart)</a>
-                                    <a href="#" class="btn btn-xs btn-success" id="api-status-up" style="-webkit-app-region:no-drag">SeqPlots running</a>
-                                    <a href="#" onclick="restartSeqPlots();" class="btn btn-xs btn-warning" id="api-status-debug" style="-webkit-app-region:no-drag">debug mode</a>
-                                </div>
-                                <div class="col-xs-4 text-right">
+                                <div class="col-xs-12">
 
-                                        Data directory: <code id='homepath' style="-webkit-app-region:no-drag"></code>&nbsp;
+                                  <span>
+                                    Status:
+                                      <a href="#" class="btn btn-xs btn-default" id="api-status-waiting"  style="-webkit-app-region:no-drag">Waiting</a>
+                                      <a href="#" onclick="restartSeqPlots()" class="btn btn-xs btn-danger" id="api-status-down" style="-webkit-app-region:no-drag">SeqPlots stopped (click to restart)</a>
+                                      <a href="#" class="btn btn-xs btn-success" id="api-status-up" style="-webkit-app-region:no-drag">SeqPlots running</a>
+                                      <a href="#" onclick="restartSeqPlots();" class="btn btn-xs btn-warning" id="api-status-debug" style="-webkit-app-region:no-drag">debug mode</a>
+                                  </span>
+                                  <span class="pull-right">
+                                    Data directory: <code id='homepath' style="-webkit-app-region:no-drag"></code>&nbsp;
                                         <button onclick="ipcRenderer.send('choose-path', true)"
                                         style="-webkit-app-region:no-drag" class="btn btn-xs btn-info">Change data directory</button>
 <!--
@@ -95,7 +94,7 @@
 
                                         <button onclick="ipcRenderer.send('seqplots-dead', true)"
                                         style="-webkit-app-region:no-drag" class="btn btn-xs btn-danger">Exit</button>
-
+  </span>
                                 </div>
                             </div>
                         </div>
