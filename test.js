@@ -9,7 +9,7 @@ var path = '';
 
 if(sys=='darwin') {
   var path = './dist/mac/SeqPlots.app/Contents/MacOS/SeqPlots'
-} else {
+} else if(sys=='linux') {
   var path = './dist/linux-unpacked/SeqPlots'
 }
 
