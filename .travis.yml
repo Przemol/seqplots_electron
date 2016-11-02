@@ -12,9 +12,10 @@ before_install:
   - ls
  
 install:
-  - npm i electron --save-dev
-  - npm i electron-builder --save-dev
-  - npm i mocha --save-dev
+  - npm install --save-dev electron
+  - npm install --save-dev electron-builder
+  - npm install --save-dev mocha 
+  - npm install --save-dev spectron
 
 script:
   - ./node_modules/.bin/build
