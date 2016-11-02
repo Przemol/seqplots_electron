@@ -43,10 +43,11 @@ final <- try({
 	    }
 
 	}
-	
-	message('Loading packages...')
-	suppressPackageStartupMessages( library(seqplots) )
-	message('Loading web interface...')
+  library(shiny, quietly=TRUE )
+  message('Loading packages...')
+  library(rtracklayer, quietly=TRUE )
+  message('Loading interface...')
+  library(seqplots, quietly=TRUE )
 	seqplots::run( root = root, launch.browser = FALSE, debug = Sys.getenv('SEQPLOTS_DEBUG')!='' )
 })
 

@@ -77,7 +77,7 @@
                                 </div>
                                 <div class="col-xs-4 text-right">
 
-
+                                        Data directory: <code id='homepath' style="-webkit-app-region:no-drag"></code>&nbsp;
                                         <button onclick="ipcRenderer.send('choose-path', true)"
                                         style="-webkit-app-region:no-drag" class="btn btn-xs btn-info">Change data directory</button>
 <!--
@@ -247,7 +247,12 @@
   			  $('#loading').html('<h3 style="color: red;">Error accured!</h3>');
   			  $('#loading').append('<h5>Please report the issue <a href="https://github.com/Przemol/seqplots/issues/new">here</a>, including following error messages:</h5>');
   				$('#loading').append('<pre>' + `${data}` + '</pre>')
+  			} else if (`${data}`.match('Data loaction: ')) {
+          home_dir = `${data}`.replace("Data loaction: ", "").replace("\n", "").replace("\n", "");
+          $('#homepath').html(home_dir);
+
   			}
+        // Data loaction: /Users/przemol/SeqPlots_data
   			//mainWindow.webContents.send('pythonLog', {'msg': `${data}`});
   		});
 
