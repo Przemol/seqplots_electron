@@ -73,7 +73,7 @@
                                     <a href="#" class="btn btn-xs btn-default" id="api-status-waiting"  style="-webkit-app-region:no-drag">Waiting</a>
                                     <a href="#" onclick="restartSeqPlots()" class="btn btn-xs btn-danger" id="api-status-down" style="-webkit-app-region:no-drag">SeqPlots stopped (click to restart)</a>
                                     <a href="#" class="btn btn-xs btn-success" id="api-status-up" style="-webkit-app-region:no-drag">SeqPlots running</a>
-                                    <a href="#" onclick="restartSeqPlots(); $('#api-status-debug').hide();" class="btn btn-xs btn-warning" id="api-status-debug" style="-webkit-app-region:no-drag">SeqPlots running in debug mode</a>
+                                    <a href="#" onclick="restartSeqPlots();" class="btn btn-xs btn-warning" id="api-status-debug" style="-webkit-app-region:no-drag">debug mode</a>
                                 </div>
                                 <div class="col-xs-4 text-right">
 
@@ -194,6 +194,9 @@
       var SEQPLOTS_DEBUG = ''
       if(debug) {
         SEQPLOTS_DEBUG = 'TRUE'
+        $('#api-status-debug').show();
+      } else {
+        $('#api-status-debug').hide();
       }
 
       var RSCRIPT;

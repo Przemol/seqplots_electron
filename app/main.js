@@ -119,11 +119,26 @@ function createWindow () {
         }
       },
       {
+        type: 'separator'
+      },
+      {
         label: 'Toggle Developer Tools',
         accelerator: process.platform === 'darwin' ? 'Alt+Command+I' : 'Ctrl+Shift+I',
         click (item, focusedWindow) {
           if (focusedWindow) focusedWindow.webContents.toggleDevTools()
         }
+      },
+      {
+          label: 'Remote/mobile access',
+          click (item, focusedWindow) {
+            if (focusedWindow) focusedWindow.webContents.executeJavaScript(`$('#mobile').modal();`)
+          }
+      },
+      {
+         label: 'SeqPlots debug mode',
+         click (item, focusedWindow) {
+           if (focusedWindow) focusedWindow.webContents.executeJavaScript(`restartSeqPlots(debug=true);`)
+         }
       },
       {
         type: 'separator'
@@ -142,19 +157,7 @@ function createWindow () {
       },
       {
         role: 'togglefullscreen'
-      },
-      {
-        label: 'Remote/mobile access',
-        click (item, focusedWindow) {
-          if (focusedWindow) focusedWindow.webContents.executeJavaScript(`$('#mobile').modal();`)
-        }
-     },
-     {
-       label: 'SeqPlots debug mode',
-       click (item, focusedWindow) {
-         if (focusedWindow) focusedWindow.webContents.executeJavaScript(`alert("DeBug"); $('#api-status-debug').show(); restartSeqPlots(debug=true);`)
-       }
-    }
+      }
     ]
   },
   {
