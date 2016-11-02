@@ -20,9 +20,9 @@
     "NGS"
   ],
   "author": {
-    "name" : "Przemyslaw Stempor",
-    "email" : "przemol@github.com",
-    "url" : "przemol.github.com"
+    "name": "Przemyslaw Stempor",
+    "email": "przemol@github.com",
+    "url": "przemol.github.com"
   },
   "license": "BSD",
   "bugs": {
@@ -37,9 +37,10 @@
   },
   "devDependencies": {
     "electron": "^1.4.3",
-    "electron-builder": "^7.14.1",
+    "electron-builder": "^7.18.0",
     "electron-packager": "^7.5.1",
     "electron-prebuilt": "^1.2.0",
+    "mocha": "^3.1.2",
     "spectron": "^3.4.0"
   },
   "build": {
