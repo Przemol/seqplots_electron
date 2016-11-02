@@ -14,16 +14,18 @@ matrix:
     - os: osx
 
 before_install:
-  - before_script:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
-  - sleep 3 # give xvfb some time to start
- 
+  - ls 
+  
 install:
   - npm install --save-dev electron
   - npm install --save-dev electron-builder
   - npm install --save-dev mocha 
   - npm install --save-dev spectron
+
+before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3 # give xvfb some time to start
 
 script:
   - ./node_modules/.bin/build
