@@ -15,8 +15,6 @@ before_install:
  
 install:
   - npm install --save-dev
-  - npm i mocha --save-dev
-  - npm i electron-builder --save-dev
 
 script:
   - ./node_modules/.bin/build
