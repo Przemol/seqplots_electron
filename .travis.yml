@@ -1,4 +1,6 @@
 language: node_js
+node_js:
+  - "4.4.x"
 
 matrix:
   include:
@@ -6,13 +8,13 @@ matrix:
     - os: linux
 
 before_install:
- - ls
+  - ls
  
 install:
-- npm install --save-dev
-- npm i mocha --save-dev
-- npm i electron-builder --save-dev
+  - npm install --save-dev
+  - npm i mocha --save-dev
+  - npm i electron-builder --save-dev
 
 script:
-- ./node_modules/.bin/build
-- ./node_modules/.bin/mocha
+  - ./node_modules/.bin/build
+  - ./node_modules/.bin/mocha
