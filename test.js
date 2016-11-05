@@ -11,6 +11,8 @@ if(sys=='darwin') {
   var path = './dist/mac/SeqPlots.app/Contents/MacOS/SeqPlots'
 } else if(sys=='linux') {
   var path = './dist/linux-unpacked/SeqPlots'
+} else {
+  var path = './dist/win-unpacked/SeqPlots.exe'
 }
 
 
