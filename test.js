@@ -12,7 +12,7 @@ if(sys=='darwin') {
 } else if(sys=='linux') {
   var path = './dist/linux-unpacked/SeqPlots'
 } else {
-  var path = './dist/win-unpacked/SeqPlots.exe'
+  var path = './dist/win-ia32-unpacked/SeqPlots.exe'
 }
 
 
