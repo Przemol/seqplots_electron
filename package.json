@@ -51,7 +51,6 @@
       "target": [
         "squirrel",
         "zip"
-        //,"nsis"
       ]
     },
     "linux": {
