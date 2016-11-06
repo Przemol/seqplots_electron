@@ -1,6 +1,8 @@
-# SeqPlots - stand alone GUI application for Mac, Windows and Linux
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.163641.svg)](https://doi.org/10.5281/zenodo.163641) 
+[![Build Status](https://travis-ci.org/Przemol/seqplots_electron.svg?branch=master)](https://travis-ci.org/Przemol/seqplots_electron)
+[![Build status](https://ci.appveyor.com/api/projects/status/fkw29ua7twjtmrr2?svg=true)](https://ci.appveyor.com/project/Przemol/seqplots-electron)
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.163641.svg)](https://doi.org/10.5281/zenodo.163641) [![Build Status](https://travis-ci.org/Przemol/seqplots_electron.svg?branch=master)](https://travis-ci.org/Przemol/seqplots_electron)
+# SeqPlots - stand alone GUI application for Mac, Windows and Linux
 
 The App bundle is an easy way to use SeqPlots for macOS, Win and Linux.
 It contains all R binaries and packages that SeqPlots depends on.
