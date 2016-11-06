@@ -1,6 +1,6 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.163641.svg)](https://doi.org/10.5281/zenodo.163641) 
-[![Build Status](https://travis-ci.org/Przemol/seqplots_electron.svg?branch=master)](https://travis-ci.org/Przemol/seqplots_electron)
-[![Build status](https://ci.appveyor.com/api/projects/status/fkw29ua7twjtmrr2?svg=true)](https://ci.appveyor.com/project/Przemol/seqplots-electron)
+Cite: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.163641.svg)](https://doi.org/10.5281/zenodo.163641) 
+Mac, Linux: [![Build Status](https://travis-ci.org/Przemol/seqplots_electron.svg?branch=master)](https://travis-ci.org/Przemol/seqplots_electron)
+Windows: [![Build status](https://ci.appveyor.com/api/projects/status/fkw29ua7twjtmrr2?svg=true)](https://ci.appveyor.com/project/Przemol/seqplots-electron)
 
 # SeqPlots - stand alone GUI application for Mac, Windows and Linux
 
