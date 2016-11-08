@@ -1,8 +1,8 @@
 {
     "version": "3.0.9",
     "askupdate": "TRUE",
-    "skip_tutoial": "true",
     "genome": "ce10",
     "user": "",
-    "warn": "true"
+    "warn": "true",
+    "skip_tutoial": false
 }
