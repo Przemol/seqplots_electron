@@ -50,8 +50,7 @@
     "win": {
       "target": [
         "squirrel",
-        "zip",
-        "nsis"
+        "zip"
       ]
     },
     "linux": {
