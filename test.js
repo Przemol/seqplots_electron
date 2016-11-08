@@ -50,6 +50,7 @@ describe('==>> Application launch', function () {
   //
   
   it('SeqPlots tests', function () {
+    if(sys=='linux') return 0;
     var app = this.app;
     var res = this.app.client
     .waitUntilWindowLoaded().then(function () {
@@ -96,7 +97,8 @@ describe('==>> Application launch', function () {
     .click('#plot_type')
     .pause(1000)
     .click('#runcalc')
-    .pause(10000)
+    .then(function () {console.log('\tRun calc')})
+    .pause(30000)
     .click('input[value="[1,1]"]').pause(600)
     .click('input[value="[1,2]"]').pause(600)
     .click('#replotL').pause(3000)
