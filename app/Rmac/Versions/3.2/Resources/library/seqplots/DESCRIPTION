@@ -51,14 +51,14 @@ Collate: 'MotifSetup-class.R' 'PlotSetPair-class.R'
         'int_imPlot2.R' 'int_plotMext.R' 'plotAverage.R'
         'plotHeatmap.R' 'run.R' 'seqplots-package.R' 'zzz.R'
 RoxygenNote: 5.0.1
-Built: R 3.2.3; ; 2016-11-02 15:36:31 UTC; unix
+Built: R 3.2.3; ; 2016-11-08 18:10:55 UTC; unix
 RemoteType: github
 RemoteHost: api.github.com
 RemoteRepo: seqplots
 RemoteUsername: przemol
 RemoteRef: master
-RemoteSha: be195662635ffbf76f26735714e2e776763a29a4
+RemoteSha: bd88ccb059af56c2b6ab64c3d116e4924b610e60
 GithubRepo: seqplots
 GithubUsername: przemol
 GithubRef: master
-GithubSHA1: be195662635ffbf76f26735714e2e776763a29a4
+GithubSHA1: bd88ccb059af56c2b6ab64c3d116e4924b610e60
