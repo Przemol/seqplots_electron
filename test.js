@@ -76,7 +76,7 @@ describe('==>> Application launch', function () {
     .pause(2000).
     click('[data-target="#calcModal"]')
     .then(function () {console.log('\tCalc modal up')})
-    .pause(3000)
+    .pause(6000)
     .click('tr*=H3K4me3_celegans_N2_L3_chrI.bw')
     .pause(1000)
     .click('[data-value="Features"]')
