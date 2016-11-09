@@ -39,7 +39,7 @@ describe('==>> Application launch', function () {
     var res = this.app.client.getWindowCount().then(function (count) {
       assert.equal(count, 2)
     }).then(function() {
-      console.log('\ttaking s-shot')
+      console.log('\t - taking s-shot')
       app.browserWindow.capturePage().then(function (imageBuffer) {
         fs.writeFile('page0.png', imageBuffer)
       })
@@ -73,10 +73,17 @@ describe('==>> Application launch', function () {
     .then(function () {console.log('\tTutorial ON')}).
     click('button[onclick="tutorial.next()"]')
     .then(function () {console.log('\tTutorial started')})
-    .pause(2000).
-    click('[data-target="#calcModal"]')
+    .pause(2000)
+    .click('[data-target="#calcModal"]')
     .then(function () {console.log('\tCalc modal up')})
-    .pause(6000)
+    .pause(10000)
+    .then(function() {
+      console.log('\t - taking s-shot')
+      app.browserWindow.capturePage().then(function (imageBuffer) {
+        fs.writeFile('page_modal.png', imageBuffer)
+      })
+    })
+    .pause(10000)
     .click('tr*=H3K4me3_celegans_N2_L3_chrI.bw')
     .then(function () {console.log('\tTrack selected')})
     .pause(1000)
@@ -123,7 +130,7 @@ describe('==>> Application launch', function () {
     .then(function () {console.log('\tTutorial out')}).pause(500)
     //.click('*=PDF').pause(1000)
     .then(function() {
-      console.log('\ttaking s-shot')
+      console.log('\t - taking s-shot')
       app.browserWindow.capturePage().then(function (imageBuffer) {
         fs.writeFile('page.png', imageBuffer)
       })

@@ -38,3 +38,6 @@ artifacts:
 
   - path: 'dist\win-ia32\*'
     name: packages
+    
+  - path: '*png'
+    name: screenshots
