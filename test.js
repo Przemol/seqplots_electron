@@ -19,7 +19,7 @@ if(sys=='darwin') {
 
 
 describe('==>> Application launch', function () {
-  this.timeout(100000)
+  this.timeout(1000000)
 
   beforeEach(function () {
     this.app = new Application({
