@@ -7,13 +7,14 @@ console.log('Sysyem: ' + sys + ' ' + os.release());
 
 const fs = require('fs');
 
+var short= true;
 var path = '';
 
 if(sys=='darwin') {
   var path = './dist/mac/SeqPlots.app/Contents/MacOS/SeqPlots'
 } else if(sys=='linux') {
   var path = './dist/linux-unpacked/SeqPlots'
-} else {
+} else if(sys=='win32') {
   var path = './dist/win-ia32-unpacked/SeqPlots.exe'
 }
 
@@ -84,7 +85,11 @@ describe('==>> Application launch', function () {
       app.browserWindow.capturePage().then(function (imageBuffer) {
         fs.writeFile('page_modal.png', imageBuffer)
       })
-    })
+    });
+    
+    if(short) return res;
+    
+    res = res
     .pause(1000).click('td*=H3K4me3_celegans_N2_L3_chrI.bw')
     .then(function () {console.log('\tTrack selected')})
     .pause(1000)
@@ -151,6 +156,7 @@ describe('==>> Application launch', function () {
       })
     })
     .pause(1000);
+    
     return res;
   })
 
