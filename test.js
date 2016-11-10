@@ -85,14 +85,20 @@ describe('==>> Application launch', function () {
       app.browserWindow.capturePage().then(function (imageBuffer) {
         fs.writeFile('page_modal.png', imageBuffer)
       })
+    })
+    .click('td*=H3K4me3_celegans_N2_L3_chrI.bw')
+    .then(function () {console.log('\tTrack selected')})
+    .pause(5000)
+    .then(function() {
+      console.log('\t - taking s-shot')
+      app.browserWindow.capturePage().then(function (imageBuffer) {
+        fs.writeFile('page_modal2.png', imageBuffer)
+      })
     });
     
     if(short) return res;
     
     res = res
-    .pause(1000).click('td*=H3K4me3_celegans_N2_L3_chrI.bw')
-    .then(function () {console.log('\tTrack selected')})
-    .pause(1000)
     .waitUntilTextExists('.popover-title', 'Select genomic features', 120000).pause(delay)
     .then(function () {console.log('\tClicking feture tab')})
     .click('a*=Features')
