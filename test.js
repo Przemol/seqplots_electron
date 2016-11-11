@@ -86,6 +86,10 @@ describe('==>> Application launch', function () {
         fs.writeFile('page_modal.png', imageBuffer)
       })
     })
+    
+    if(short) return res;
+    
+    res = res
     .click('td*=H3K4me3_celegans_N2_L3_chrI.bw')
     .then(function () {console.log('\tTrack selected')})
     .pause(5000)
