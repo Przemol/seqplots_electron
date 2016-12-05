@@ -24,7 +24,7 @@
     "email": "przemol@github.com",
     "url": "przemol.github.com"
   },
-  "license": "BSD",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Przemol/seqplots/issues"
   },
@@ -32,21 +32,20 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "jquery": "^3.1.0",
-    "ngrok": "^2.2.2",
-    "electron-squirrel-startup": "^1.0.0"
+    "ngrok": "^2.2.2"
   },
   "devDependencies": {
-    "electron": "^1.4.3",
-    "electron-builder": "^7.18.0",
-    "electron-packager": "^7.5.1",
-    "electron-prebuilt": "^1.2.0",
+    "electron": "^1.4.10",
+    "electron-builder": "^10.5.0",
     "mocha": "^3.1.2",
+    "ngrok": "^2.2.4",
     "spectron": "^3.4.0"
   },
   "build": {
-    "appId": "SeqPlots3",
+    "appId": "SeqPlots",
     "category": "EDA",
     "asar": false,
+    "asarUnpack": "**/node_modules/ngrok",
     "win": {
       "target": [
         "squirrel",

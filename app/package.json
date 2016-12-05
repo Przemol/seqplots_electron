@@ -14,7 +14,7 @@
     "email" : "przemol@github.com",
     "url" : "przemol.github.com"
   },
-  "license": "",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Przemol/seqplots/issues"
   },
