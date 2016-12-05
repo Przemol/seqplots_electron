@@ -13,7 +13,7 @@ var path = '';
 if(sys=='darwin') {
   var path = './dist/mac/SeqPlots.app/Contents/MacOS/SeqPlots'
 } else if(sys=='linux') {
-  var path = './dist/linux-unpacked/SeqPlots'
+  var path = './dist/linux-unpacked/seqplots'
 } else if(sys=='win32') {
   var path = './dist/win-ia32-unpacked/SeqPlots.exe'
 }
