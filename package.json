@@ -32,13 +32,12 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "jquery": "^3.1.0",
-    "ngrok": "^2.2.2"
+    "ngrok": "^2.2.4"
   },
   "devDependencies": {
     "electron": "^1.4.10",
     "electron-builder": "^10.5.0",
     "mocha": "^3.1.2",
-    "ngrok": "^2.2.4",
     "spectron": "^3.4.0"
   },
   "build": {
@@ -48,7 +47,7 @@
     "asarUnpack": "**/node_modules/ngrok",
     "win": {
       "target": [
-        "squirrel",
+        "nsis",
         "zip"
       ]
     },
@@ -58,9 +57,6 @@
         "zip",
         "deb"
       ]
-    },
-    "squirrelWindows": {
-      "msi": true
     },
     "files": [
       "**/*",
