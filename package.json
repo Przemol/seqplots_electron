@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "electron": "^1.4.10",
-    "electron-builder": "^10.5.0",
+    "electron-builder": "^10.0.0",
     "mocha": "^3.1.2",
     "spectron": "^3.4.0"
   },
@@ -47,15 +47,12 @@
     "asarUnpack": "**/node_modules/ngrok",
     "win": {
       "target": [
-        "nsis",
-        "zip"
+        "nsis"
       ]
     },
     "linux": {
       "target": [
-        "AppImage",
-        "zip",
-        "deb"
+        "AppImage"
       ]
     },
     "files": [
