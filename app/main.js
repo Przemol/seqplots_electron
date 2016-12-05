@@ -6,23 +6,23 @@ const BrowserWindow = electron.BrowserWindow
 const {ipcMain} = require('electron')
 const path = require('path');
 // Updater
-const autoUpdater = electron.autoUpdater;
+//const autoUpdater = electron.autoUpdater;
 const os = require('os');
-if(require('electron-squirrel-startup')) return;
+// if(require('electron-squirrel-startup')) return;
 
 var platform = os.platform() + '_' + os.arch();
 var version = app.getVersion();
 var seqplotsrunning = false;
 
-try {
+//try {
   //console.log('https://spup.herokuapp.com/'+platform+'/'+version);
   //autoUpdater.setFeedURL('https://spup.herokuapp.com/'+platform+'/'+version);
-} catch (e) {console.log(e)}
+//} catch (e) {console.log(e)}
 
-autoUpdater.on('update-downloaded', function(){
-  console.log('update');
-  mainWindow.webContents.send('update-ready');
-});
+//autoUpdater.on('update-downloaded', function(){
+//  console.log('update');
+//  mainWindow.webContents.send('update-ready');
+//});
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -58,11 +58,11 @@ function createWindow () {
   });
   mainWindow.maximize();
 
-  mainWindow.webContents.once("did-frame-finish-load", function (e) {
-    try {
-      autoUpdater.checkForUpdates();
-    } catch (e) {}
-  });
+ // mainWindow.webContents.once("did-frame-finish-load", function (e) {
+ //   try {
+ //     autoUpdater.checkForUpdates();
+ //   } catch (e) {}
+ // });
 
   // and load the index.html of the app.
   mainWindow.loadURL(`file://${__dirname}/index.html`)
@@ -348,9 +348,9 @@ ipcMain.on('cookie', function(event, arg) {
   });
 });
 
-ipcMain.on('installUpdate', function(event) {
-  autoUpdater.quitAndInstall();
-});
+//ipcMain.on('installUpdate', function(event) {
+//  autoUpdater.quitAndInstall();
+//});
 
 
 
