@@ -206,13 +206,14 @@
         
         var linux = spawn('python', ['-c', "import platform; print platform.linux_distribution()[1]"]);
         
-        ls.stdout.on('data', (data) => {
+        linux.stdout.on('data', (data) => {
           console.log(`stdout: ${data}`);
           if(!/^16.04/.test(`${data}`)) { alert('Not right version of Linux!!') }
         });
 
-        ls.stderr.on('data', (data) => {
+        linux.stderr.on('data', (data) => {
           console.log(`stderr: ${data}`);
+          alert('Not right version of Linux!!')
         });
         
         RSCRIPT = path.join(__dirname, 'Rlinux_start')
