@@ -26,7 +26,7 @@ test_script:
   # run tests
   - .\node_modules\.bin\build
   - dir dist
-  - dir dist\win-ia32
+  - dir dist\win-ia32-unpacked
   - .\node_modules\.bin\mocha
 
 # Don't actually build.
@@ -36,7 +36,7 @@ artifacts:
   - path: 'dist\*zip'
     name: zip
 
-  - path: 'dist\win-ia32\*'
+  - path: 'dist\win-ia32-unpacked\*'
     name: packages
     
   - path: '*png'
