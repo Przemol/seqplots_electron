@@ -203,6 +203,18 @@
         RSCRIPT = path.join(__dirname, 'Rwin/R-Portable/App/R-Portable/bin/x64/Rscript.exe')
         ls = spawn(RSCRIPT, [INIT], {env: {'FOO': __dirname, 'LD_LIBRARY_PATH': LD_LIBRARY_PATH}}, { detached: true });
       } else if(/^linux/.test(process.platform)) {
+        
+        var linux = spawn('python', ['-c', "import platform; print platform.linux_distribution()[1]"]);
+        
+        ls.stdout.on('data', (data) => {
+          console.log(`stdout: ${data}`);
+          if(!/^16.04/.test(`${data}`)) { alert('Not right version of Linux!!') }
+        });
+
+        ls.stderr.on('data', (data) => {
+          console.log(`stderr: ${data}`);
+        });
+        
         RSCRIPT = path.join(__dirname, 'Rlinux_start')
         ls = spawn('/bin/bash', [path.join(__dirname, 'Rlinux_start')], {env: {'FOO': __dirname, 'R_HOME': R_HOME}}, { detached: true });
       } else {
