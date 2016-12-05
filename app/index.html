@@ -205,15 +205,15 @@
       } else if(/^linux/.test(process.platform)) {
         
         var linux = spawn('python', ['-c', "import platform; print platform.linux_distribution()[1]"]);
-        
+        var linux_msg = 'Only Ubuntu 16.04 LTS (Xenial Xerus) is supported by SeqPlots desktop app. Please update your system: http://releases.ubuntu.com/16.04/ or install R/Bioconductor version of SeqPlots: http://bioconductor.org/packages/seqplots';
         linux.stdout.on('data', (data) => {
           console.log(`stdout: ${data}`);
-          if(!/^16.04/.test(`${data}`)) { alert('Not right version of Linux!!') }
+          if(!/^16.04/.test(`${data}`)) { alert(linux_msg) }
         });
 
         linux.stderr.on('data', (data) => {
           console.log(`stderr: ${data}`);
-          alert('Not right version of Linux!!')
+          alert(linux_msg)
         });
         
         RSCRIPT = path.join(__dirname, 'Rlinux_start')
