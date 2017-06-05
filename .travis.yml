@@ -25,7 +25,7 @@ before_install:
   
 install:
   - npm install --save-dev electron
-  - npm install --save-dev electron-builder
+  - npm install --save-dev electron-builder@18.3.5
   - npm install --save-dev mocha 
   - npm install --save-dev spectron
 

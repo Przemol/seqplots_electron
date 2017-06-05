@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "electron": "^1.6.10",
-    "electron-builder": "^18.5.0",
+    "electron-builder": "^18.3.5",
     "mocha": "^3.4.2",
     "spectron": "^3.6.4"
   },
