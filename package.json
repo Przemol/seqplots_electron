@@ -1,6 +1,6 @@
 {
   "name": "SeqPlots",
-  "version": "3.1.12b",
+  "version": "3.1.13",
   "description": "An interactive tool for visualizing NGS signals and sequence motif densities along genomic features using average plots and heatmaps.",
   "main": "main.js",
   "scripts": {
@@ -35,10 +35,10 @@
     "ngrok": "^2.2.4"
   },
   "devDependencies": {
-    "electron": "",
+    "electron": "^1.6.10",
     "electron-builder": "^18.3.5",
-    "mocha": "^3.1.2",
-    "spectron": "^3.4.0"
+    "mocha": "^3.4.2",
+    "spectron": "^3.6.4"
   },
   "build": {
     "appId": "SeqPlots",
