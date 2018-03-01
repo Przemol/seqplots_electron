@@ -14,6 +14,8 @@ var platform = os.platform() + '_' + os.arch();
 var version = app.getVersion();
 var seqplotsrunning = false;
 
+const autoUpdater = require("electron-updater").autoUpdater;
+
 //try {
   //console.log('https://spup.herokuapp.com/'+platform+'/'+version);
   //autoUpdater.setFeedURL('https://spup.herokuapp.com/'+platform+'/'+version);
@@ -177,6 +179,10 @@ function createWindow () {
       {
         label: 'Learn More',
         click () { require('electron').shell.openExternal('http://przemol.github.io/seqplots/') }
+      },
+      {
+        label: 'Update',
+        click () { autoUpdater.checkForUpdatesAndNotify() }
       }
     ]
   }

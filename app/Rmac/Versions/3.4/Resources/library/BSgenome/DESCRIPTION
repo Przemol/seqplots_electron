@@ -1,0 +1,43 @@
+Package: BSgenome
+Title: Software infrastructure for efficient representation of full
+        genomes and their SNPs
+Description: Infrastructure shared by all the Biostrings-based genome data
+	packages.
+Version: 1.46.0
+Encoding: UTF-8
+Author: Hervé Pagès
+Maintainer: H. Pagès <hpages@fredhutch.org>
+biocViews: Genetics, Infrastructure, DataRepresentation,
+        SequenceMatching, Annotation, SNP
+Depends: R (>= 2.8.0), methods, BiocGenerics (>= 0.13.8), S4Vectors (>=
+        0.9.36), IRanges (>= 2.11.16), GenomeInfoDb (>= 1.13.1),
+        GenomicRanges (>= 1.29.14), Biostrings (>= 2.35.3), rtracklayer
+        (>= 1.25.8)
+Imports: methods, utils, stats, BiocGenerics, S4Vectors, IRanges,
+        XVector, GenomeInfoDb, GenomicRanges, Biostrings, Rsamtools,
+        rtracklayer
+Suggests: BiocInstaller, Biobase, BSgenome.Celegans.UCSC.ce2,
+        BSgenome.Hsapiens.UCSC.hg38,
+        BSgenome.Hsapiens.UCSC.hg38.masked,
+        BSgenome.Mmusculus.UCSC.mm10, BSgenome.Rnorvegicus.UCSC.rn5,
+        BSgenome.Scerevisiae.UCSC.sacCer1,
+        TxDb.Hsapiens.UCSC.hg38.knownGene,
+        TxDb.Mmusculus.UCSC.mm10.knownGene,
+        SNPlocs.Hsapiens.dbSNP144.GRCh38,
+        XtraSNPlocs.Hsapiens.dbSNP144.GRCh38, hgu95av2probe, RUnit
+License: Artistic-2.0
+LazyLoad: yes
+Collate: utils.R OnDiskLongTable_old-class.R OnDiskLongTable-class.R
+        OnDiskNamedSequences-class.R SNPlocs-class.R
+        ODLT_SNPlocs-class.R OldFashionSNPlocs-class.R
+        InjectSNPsHandler-class.R XtraSNPlocs-class.R BSgenome-class.R
+        available.genomes.R injectSNPs.R getSeq-methods.R bsapply.R
+        BSgenomeViews-class.R BSgenome-utils.R export-methods.R
+        BSgenomeForge.R
+NeedsCompilation: no
+Packaged: 2017-10-30 23:07:21 UTC; biocbuild
+Built: R 3.4.2; ; 2017-10-31 16:21:50 UTC; unix
+RemoteType: cran
+RemoteSha: 1.46.0
+RemoteRepos: structure(c("https://cran.rstudio.com", "https://bioconductor.org/packages/3.6/bioc", "https://bioconductor.org/packages/3.6/data/annotation", "https://bioconductor.org/packages/3.6/data/experiment"), .Names = c("CRAN", "BioCsoft", "BioCann", "BioCexp"))
+RemotePkgType: binary

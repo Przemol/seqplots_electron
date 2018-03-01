@@ -1,0 +1,20 @@
+Package: kohonen
+Version: 3.0.4
+Title: Supervised and Unsupervised Self-Organising Maps
+Author: Ron Wehrens and Johannes Kruisselbrink
+Maintainer: Ron Wehrens <ron.wehrens@gmail.com>
+Description: Functions to train self-organising maps (SOMs). Also interrogation of the maps and prediction using trained maps are supported. The name of the package refers to Teuvo Kohonen, the inventor of the SOM.
+License: GPL (>= 2)
+Depends: R (>= 2.10)
+Imports: MASS, Rcpp (>= 0.12.7)
+LinkingTo: Rcpp
+NeedsCompilation: yes
+Packaged: 2017-08-28 15:23:15 UTC; ron
+Repository: CRAN
+Date/Publication: 2017-08-28 18:51:19 UTC
+Built: R 3.4.1; x86_64-apple-darwin15.6.0; 2017-08-29 05:22:49 UTC; unix
+Archs: kohonen.so.dSYM
+RemoteType: cran
+RemoteSha: 3.0.4
+RemoteRepos: structure(c("https://cran.rstudio.com", "https://bioconductor.org/packages/3.6/bioc", "https://bioconductor.org/packages/3.6/data/annotation", "https://bioconductor.org/packages/3.6/data/experiment"), .Names = c("CRAN", "BioCsoft", "BioCann", "BioCexp"))
+RemotePkgType: binary
